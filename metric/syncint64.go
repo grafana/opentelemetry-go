@@ -79,10 +79,10 @@ type Int64UpDownCounter interface {
 	// section of the package documentation for more information.
 	embedded.Int64UpDownCounter
 
-	// Removes an existing timeseries
+	// Add records a change to the counter.
 	//
-	// Use the WithAttributeSet or WithAttributes option to include measurement
-	// attributes.
+	// Use the WithAttributeSet (or, if performance is not a concern,
+	// the WithAttributes) option to include measurement attributes.
 	Add(ctx context.Context, incr int64, options ...AddOption)
 
 	// Removes an existing timeseries

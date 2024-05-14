@@ -336,6 +336,13 @@ func (e *expoHistogram[N]) measure(ctx context.Context, value N, fltrAttr attrib
 	v.res.Offer(ctx, value, droppedAttr)
 }
 
+func (e *expoHistogram[N]) remove(ctx context.Context, fltrAttr attribute.Set) {
+	e.valuesMu.Lock()
+	defer e.valuesMu.Unlock()
+
+	delete(e.values, fltrAttr.Equivalent())
+}
+
 func (e *expoHistogram[N]) delta(dest *metricdata.Aggregation) int {
 	t := now()
 

@@ -8,7 +8,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"reflect"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -449,8 +448,6 @@ func (i *inserter[N]) instID(kind InstrumentKind, stream Stream) instID {
 // monotonic. If the agg is unknown or temporality is invalid, an error is
 // returned.
 func (i *inserter[N]) aggregateFunc(b aggregate.Builder[N], agg Aggregation, kind InstrumentKind) (meas aggregate.Measure[N], remove aggregate.Remove, comp aggregate.ComputeAggregation, err error) {
-	fmt.Printf("### aggregateFunc type is %s\n", reflect.TypeOf(agg))
-
 	switch a := agg.(type) {
 	case AggregationDefault:
 		return i.aggregateFunc(b, DefaultAggregationSelector(kind), kind)
@@ -461,16 +458,15 @@ func (i *inserter[N]) aggregateFunc(b aggregate.Builder[N], agg Aggregation, kin
 		case InstrumentKindGauge:
 			meas, comp = b.LastValue()
 		case InstrumentKindObservableGauge:
-			meas, comp = b.PrecomputedLastValue()
+			meas, remove, comp = b.PrecomputedLastValue()
 		}
 	case AggregationSum:
 		switch kind {
 		case InstrumentKindObservableCounter:
-			meas, comp = b.PrecomputedSum(true)
+			meas, remove, comp = b.PrecomputedSum(true)
 		case InstrumentKindObservableUpDownCounter:
-			meas, comp = b.PrecomputedSum(false)
+			meas, remove, comp = b.PrecomputedSum(false)
 		case InstrumentKindCounter, InstrumentKindHistogram:
-			fmt.Printf("### InstrumentKindCounter\n")
 			meas, remove, comp = b.Sum(true)
 		default:
 			// InstrumentKindUpDownCounter, InstrumentKindObservableGauge, and
@@ -486,7 +482,7 @@ func (i *inserter[N]) aggregateFunc(b aggregate.Builder[N], agg Aggregation, kin
 			// https://github.com/open-telemetry/opentelemetry-specification/blob/v1.21.0/specification/metrics/sdk.md#histogram-aggregations
 			noSum = true
 		}
-		meas, comp = b.ExplicitBucketHistogram(a.Boundaries, a.NoMinMax, noSum)
+		meas, remove, comp = b.ExplicitBucketHistogram(a.Boundaries, a.NoMinMax, noSum)
 	case AggregationBase2ExponentialHistogram:
 		var noSum bool
 		switch kind {
@@ -496,7 +492,7 @@ func (i *inserter[N]) aggregateFunc(b aggregate.Builder[N], agg Aggregation, kin
 			// https://github.com/open-telemetry/opentelemetry-specification/blob/v1.21.0/specification/metrics/sdk.md#histogram-aggregations
 			noSum = true
 		}
-		meas, comp = b.ExponentialBucketHistogram(a.MaxSize, a.MaxScale, a.NoMinMax, noSum)
+		meas, remove, comp = b.ExponentialBucketHistogram(a.MaxSize, a.MaxScale, a.NoMinMax, noSum)
 
 	default:
 		err = errUnknownAggregation

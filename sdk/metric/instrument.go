@@ -205,9 +205,6 @@ func (i *int64Inst) Remove(ctx context.Context, opts ...metric.RemoveOption) {
 	}
 }
 
-func (i *int64Inst) RemoveAll(ctx context.Context, opts ...metric.AddOption) {
-}
-
 func (i *int64Inst) aggregate(ctx context.Context, val int64, s attribute.Set) { // nolint:revive  // okay to shadow pkg with method.
 	for _, in := range i.measures {
 		in(ctx, val, s)

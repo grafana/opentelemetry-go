@@ -56,6 +56,13 @@ func (s *lastValue[N]) measure(ctx context.Context, value N, fltrAttr attribute.
 	s.values[attr.Equivalent()] = d
 }
 
+func (s *lastValue[N]) remove(ctx context.Context, fltrAttr attribute.Set) {
+	s.Lock()
+	defer s.Unlock()
+
+	delete(s.values, fltrAttr.Equivalent())
+}
+
 func (s *lastValue[N]) delta(dest *metricdata.Aggregation) int {
 	t := now()
 	// Ignore if dest is not a metricdata.Gauge. The chance for memory reuse of

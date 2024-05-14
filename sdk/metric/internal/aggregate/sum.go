@@ -5,7 +5,6 @@ package aggregate // import "go.opentelemetry.io/otel/sdk/metric/internal/aggreg
 
 import (
 	"context"
-	"fmt"
 	"sync"
 	"time"
 
@@ -56,8 +55,6 @@ func (s *valueMap[N]) measure(ctx context.Context, value N, fltrAttr attribute.S
 func (s *valueMap[N]) remove(ctx context.Context, fltrAttr attribute.Set) {
 	s.Lock()
 	defer s.Unlock()
-
-	fmt.Printf("### valueMap.remove\n")
 
 	delete(s.values, fltrAttr.Equivalent())
 }
