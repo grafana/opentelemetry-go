@@ -176,6 +176,12 @@ type Int64Counter struct{ embedded.Int64Counter }
 // Add performs no operation.
 func (Int64Counter) Add(context.Context, int64, ...metric.AddOption) {}
 
+// Remove performs no operation.
+func (Int64Counter) Remove(context.Context, ...metric.AddOption) {}
+
+// RemoveAll performs no operation.
+func (Int64Counter) RemoveAll(context.Context, ...metric.AddOption) {}
+
 // Float64Counter is an OpenTelemetry Counter used to record float64
 // measurements. It produces no telemetry.
 type Float64Counter struct{ embedded.Float64Counter }

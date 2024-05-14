@@ -25,6 +25,18 @@ type Int64Counter interface {
 	// Use the WithAttributeSet (or, if performance is not a concern,
 	// the WithAttributes) option to include measurement attributes.
 	Add(ctx context.Context, incr int64, options ...AddOption)
+
+	// Add records a change to the counter.
+	//
+	// Use the WithAttributeSet (or, if performance is not a concern,
+	// the WithAttributes) option to include measurement attributes.
+	Remove(ctx context.Context, options ...AddOption)
+
+	// Add records a change to the counter.
+	//
+	// Use the WithAttributeSet (or, if performance is not a concern,
+	// the WithAttributes) option to include measurement attributes.
+	RemoveAll(ctx context.Context, options ...AddOption)
 }
 
 // Int64CounterConfig contains options for synchronous counter instruments that
