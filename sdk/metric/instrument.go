@@ -197,14 +197,12 @@ func (i *int64Inst) Record(ctx context.Context, val int64, opts ...metric.Record
 	i.aggregate(ctx, val, c.Attributes())
 }
 
-func (i *int64Inst) Remove(ctx context.Context, opts ...metric.AddOption) {
-	c := metric.NewAddConfig(opts)
+func (i *int64Inst) Remove(ctx context.Context, opts ...metric.RemoveOption) {
+	c := metric.NewRemoveConfig(opts)
 
 	for _, rem := range i.removers {
 		rem(ctx, c.Attributes())
 	}
-
-	fmt.Printf("### int64Inst.Remove called, len of measure is %d\n", len(i.measures))
 }
 
 func (i *int64Inst) RemoveAll(ctx context.Context, opts ...metric.AddOption) {
@@ -241,6 +239,14 @@ func (i *float64Inst) Add(ctx context.Context, val float64, opts ...metric.AddOp
 func (i *float64Inst) Record(ctx context.Context, val float64, opts ...metric.RecordOption) {
 	c := metric.NewRecordConfig(opts)
 	i.aggregate(ctx, val, c.Attributes())
+}
+
+func (i *float64Inst) Remove(ctx context.Context, opts ...metric.RemoveOption) {
+	c := metric.NewRemoveConfig(opts)
+
+	for _, rem := range i.removers {
+		rem(ctx, c.Attributes())
+	}
 }
 
 func (i *float64Inst) aggregate(ctx context.Context, val float64, s attribute.Set) {

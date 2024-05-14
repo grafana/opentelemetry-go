@@ -177,10 +177,7 @@ type Int64Counter struct{ embedded.Int64Counter }
 func (Int64Counter) Add(context.Context, int64, ...metric.AddOption) {}
 
 // Remove performs no operation.
-func (Int64Counter) Remove(context.Context, ...metric.AddOption) {}
-
-// RemoveAll performs no operation.
-func (Int64Counter) RemoveAll(context.Context, ...metric.AddOption) {}
+func (Int64Counter) Remove(context.Context, ...metric.RemoveOption) {}
 
 // Float64Counter is an OpenTelemetry Counter used to record float64
 // measurements. It produces no telemetry.
@@ -189,12 +186,18 @@ type Float64Counter struct{ embedded.Float64Counter }
 // Add performs no operation.
 func (Float64Counter) Add(context.Context, float64, ...metric.AddOption) {}
 
+// Remove performs no operation.
+func (Float64Counter) Remove(context.Context, ...metric.RemoveOption) {}
+
 // Int64UpDownCounter is an OpenTelemetry UpDownCounter used to record int64
 // measurements. It produces no telemetry.
 type Int64UpDownCounter struct{ embedded.Int64UpDownCounter }
 
 // Add performs no operation.
 func (Int64UpDownCounter) Add(context.Context, int64, ...metric.AddOption) {}
+
+// Remove performs no operation.
+func (Int64UpDownCounter) Remove(context.Context, ...metric.RemoveOption) {}
 
 // Float64UpDownCounter is an OpenTelemetry UpDownCounter used to record
 // float64 measurements. It produces no telemetry.
@@ -203,12 +206,18 @@ type Float64UpDownCounter struct{ embedded.Float64UpDownCounter }
 // Add performs no operation.
 func (Float64UpDownCounter) Add(context.Context, float64, ...metric.AddOption) {}
 
+// Remove performs no operation.
+func (Float64UpDownCounter) Remove(context.Context, ...metric.RemoveOption) {}
+
 // Int64Histogram is an OpenTelemetry Histogram used to record int64
 // measurements. It produces no telemetry.
 type Int64Histogram struct{ embedded.Int64Histogram }
 
 // Record performs no operation.
 func (Int64Histogram) Record(context.Context, int64, ...metric.RecordOption) {}
+
+// Remove performs no operation.
+func (Int64Histogram) Remove(context.Context, ...metric.RemoveOption) {}
 
 // Float64Histogram is an OpenTelemetry Histogram used to record float64
 // measurements. It produces no telemetry.
@@ -230,6 +239,9 @@ type Float64Gauge struct{ embedded.Float64Gauge }
 
 // Record performs no operation.
 func (Float64Gauge) Record(context.Context, float64, ...metric.RecordOption) {}
+
+// Remove performs no operation.
+func (Float64Histogram) Remove(context.Context, ...metric.RemoveOption) {}
 
 // Int64ObservableCounter is an OpenTelemetry ObservableCounter used to record
 // int64 measurements. It produces no telemetry.

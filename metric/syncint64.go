@@ -26,17 +26,11 @@ type Int64Counter interface {
 	// the WithAttributes) option to include measurement attributes.
 	Add(ctx context.Context, incr int64, options ...AddOption)
 
-	// Add records a change to the counter.
+	// Removes an existing timeseries
 	//
-	// Use the WithAttributeSet (or, if performance is not a concern,
-	// the WithAttributes) option to include measurement attributes.
-	Remove(ctx context.Context, options ...AddOption)
-
-	// Add records a change to the counter.
-	//
-	// Use the WithAttributeSet (or, if performance is not a concern,
-	// the WithAttributes) option to include measurement attributes.
-	RemoveAll(ctx context.Context, options ...AddOption)
+	// Use the WithAttributeSet or WithAttributes option to include measurement
+	// attributes.
+	Remove(ctx context.Context, options ...RemoveOption)
 }
 
 // Int64CounterConfig contains options for synchronous counter instruments that
@@ -85,11 +79,17 @@ type Int64UpDownCounter interface {
 	// section of the package documentation for more information.
 	embedded.Int64UpDownCounter
 
-	// Add records a change to the counter.
+	// Removes an existing timeseries
 	//
-	// Use the WithAttributeSet (or, if performance is not a concern,
-	// the WithAttributes) option to include measurement attributes.
+	// Use the WithAttributeSet or WithAttributes option to include measurement
+	// attributes.
 	Add(ctx context.Context, incr int64, options ...AddOption)
+
+	// Removes an existing timeseries
+	//
+	// Use the WithAttributeSet or WithAttributes option to include measurement
+	// attributes.
+	Remove(ctx context.Context, options ...RemoveOption)
 }
 
 // Int64UpDownCounterConfig contains options for synchronous counter
@@ -143,6 +143,12 @@ type Int64Histogram interface {
 	// Use the WithAttributeSet (or, if performance is not a concern,
 	// the WithAttributes) option to include measurement attributes.
 	Record(ctx context.Context, incr int64, options ...RecordOption)
+
+	// Removes an existing timeseries
+	//
+	// Use the WithAttributeSet or WithAttributes option to include measurement
+	// attributes.
+	Remove(ctx context.Context, options ...RemoveOption)
 }
 
 // Int64HistogramConfig contains options for synchronous histogram instruments
