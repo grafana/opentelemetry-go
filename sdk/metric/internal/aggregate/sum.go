@@ -5,6 +5,7 @@ package aggregate // import "go.opentelemetry.io/otel/sdk/metric/internal/aggreg
 
 import (
 	"context"
+	"fmt"
 	"sync"
 	"time"
 
@@ -50,6 +51,15 @@ func (s *valueMap[N]) measure(ctx context.Context, value N, fltrAttr attribute.S
 	v.res.Offer(ctx, value, droppedAttr)
 
 	s.values[attr.Equivalent()] = v
+}
+
+func (s *valueMap[N]) remove(ctx context.Context, fltrAttr attribute.Set) {
+	s.Lock()
+	defer s.Unlock()
+
+	fmt.Printf("### valueMap.remove\n")
+
+	delete(s.values, fltrAttr.Equivalent())
 }
 
 // newSum returns an aggregator that summarizes a set of measurements as their

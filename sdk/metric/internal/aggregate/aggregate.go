@@ -19,6 +19,9 @@ var now = time.Now
 // Measure receives measurements to be aggregated.
 type Measure[N int64 | float64] func(context.Context, N, attribute.Set)
 
+// Remove receives a time series to be deleted
+type Remove func(context.Context, attribute.Set)
+
 // ComputeAggregation stores the aggregate of measurements into dest and
 // returns the number of aggregate data-points output.
 type ComputeAggregation func(dest *metricdata.Aggregation) int
@@ -110,13 +113,13 @@ func (b Builder[N]) PrecomputedSum(monotonic bool) (Measure[N], ComputeAggregati
 }
 
 // Sum returns a sum aggregate function input and output.
-func (b Builder[N]) Sum(monotonic bool) (Measure[N], ComputeAggregation) {
+func (b Builder[N]) Sum(monotonic bool) (Measure[N], Remove, ComputeAggregation) {
 	s := newSum[N](monotonic, b.AggregationLimit, b.resFunc())
 	switch b.Temporality {
 	case metricdata.DeltaTemporality:
-		return b.filter(s.measure), s.delta
+		return b.filter(s.measure), s.remove, s.delta
 	default:
-		return b.filter(s.measure), s.cumulative
+		return b.filter(s.measure), s.remove, s.cumulative
 	}
 }
 

@@ -172,6 +172,7 @@ func (i instID) normalize() instID {
 
 type int64Inst struct {
 	measures []aggregate.Measure[int64]
+	removers []aggregate.Remove
 
 	embedded.Int64Counter
 	embedded.Int64UpDownCounter
@@ -196,6 +197,19 @@ func (i *int64Inst) Record(ctx context.Context, val int64, opts ...metric.Record
 	i.aggregate(ctx, val, c.Attributes())
 }
 
+func (i *int64Inst) Remove(ctx context.Context, opts ...metric.AddOption) {
+	c := metric.NewAddConfig(opts)
+
+	for _, rem := range i.removers {
+		rem(ctx, c.Attributes())
+	}
+
+	fmt.Printf("### int64Inst.Remove called, len of measure is %d\n", len(i.measures))
+}
+
+func (i *int64Inst) RemoveAll(ctx context.Context, opts ...metric.AddOption) {
+}
+
 func (i *int64Inst) aggregate(ctx context.Context, val int64, s attribute.Set) { // nolint:revive  // okay to shadow pkg with method.
 	for _, in := range i.measures {
 		in(ctx, val, s)
@@ -204,6 +218,7 @@ func (i *int64Inst) aggregate(ctx context.Context, val int64, s attribute.Set) {
 
 type float64Inst struct {
 	measures []aggregate.Measure[float64]
+	removers []aggregate.Remove
 
 	embedded.Float64Counter
 	embedded.Float64UpDownCounter
@@ -317,6 +332,7 @@ func (o *observable[N]) appendMeasures(meas []aggregate.Measure[N]) {
 }
 
 type measures[N int64 | float64] []aggregate.Measure[N]
+type removers []aggregate.Remove
 
 // observe records the val for the set of attrs.
 func (m measures[N]) observe(val N, s attribute.Set) {

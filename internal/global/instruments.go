@@ -5,6 +5,7 @@ package global // import "go.opentelemetry.io/otel/internal/global"
 
 import (
 	"context"
+	"fmt"
 	"sync/atomic"
 
 	"go.opentelemetry.io/otel/metric"
@@ -331,6 +332,13 @@ func (i *siCounter) Add(ctx context.Context, x int64, opts ...metric.AddOption) 
 	if ctr := i.delegate.Load(); ctr != nil {
 		ctr.(metric.Int64Counter).Add(ctx, x, opts...)
 	}
+}
+
+func (i *siCounter) Remove(ctx context.Context, opts ...metric.AddOption) {
+	fmt.Printf("### siCounter.Remove called\n")
+}
+
+func (i *siCounter) RemoveAll(ctx context.Context, opts ...metric.AddOption) {
 }
 
 type siUpDownCounter struct {
