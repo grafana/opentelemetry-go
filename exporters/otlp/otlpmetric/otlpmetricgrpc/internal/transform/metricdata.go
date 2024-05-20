@@ -151,6 +151,7 @@ func DataPoints[N int64 | float64](dPts []metricdata.DataPoint[N]) []*mpb.Number
 				AsDouble: v,
 			}
 		}
+		ndp.Flags = buildDataPointFlags(dPt.NoRecordedValue)
 		out = append(out, ndp)
 	}
 	return out
@@ -195,6 +196,7 @@ func HistogramDataPoints[N int64 | float64](dPts []metricdata.HistogramDataPoint
 			vF64 := float64(v)
 			hdp.Max = &vF64
 		}
+		hdp.Flags = buildDataPointFlags(dPt.NoRecordedValue)
 		out = append(out, hdp)
 	}
 	return out
@@ -242,6 +244,7 @@ func ExponentialHistogramDataPoints[N int64 | float64](dPts []metricdata.Exponen
 			vF64 := float64(v)
 			ehdp.Max = &vF64
 		}
+		ehdp.Flags = buildDataPointFlags(dPt.NoRecordedValue)
 		out = append(out, ehdp)
 	}
 	return out
@@ -284,6 +287,16 @@ func timeUnixNano(t time.Time) uint64 {
 	}
 	return uint64(t.UnixNano())
 }
+
+func buildDataPointFlags(noRecordedValue bool) uint32 {
+	flags := mpb.DataPointFlags_DATA_POINT_FLAGS_DO_NOT_USE
+	if noRecordedValue {
+		flags |= mpb.DataPointFlags_DATA_POINT_FLAGS_NO_RECORDED_VALUE_MASK
+	}
+
+	return uint32(flags)
+}
+
 
 // Exemplars returns a slice of OTLP Exemplars generated from exemplars.
 func Exemplars[N int64 | float64](exemplars []metricdata.Exemplar[N]) []*mpb.Exemplar {
