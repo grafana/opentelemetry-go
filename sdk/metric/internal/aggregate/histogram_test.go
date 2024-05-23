@@ -46,17 +46,24 @@ func TestHistogram(t *testing.T) {
 
 type conf[N int64 | float64] struct {
 	noSum bool
-	hPt   func(attribute.Set, N, uint64, time.Time, time.Time) metricdata.HistogramDataPoint[N]
+	hPt        func(attribute.Set, N, uint64, time.Time, time.Time) metricdata.HistogramDataPoint[N]
+}
+
+func (c conf[N]) hPtRemoved(attrs attribute.Set, value N, multi uint64, start time.Time, t time.Time) metricdata.HistogramDataPoint[N] {
+	dataPoint := c.hPt(attrs, value, multi, start, t)
+	dataPoint.NoRecordedValue = true
+
+	return dataPoint
 }
 
 func testDeltaHist[N int64 | float64](c conf[N]) func(t *testing.T) {
-	in, _, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.ExplicitBucketHistogram(bounds, noMinMax, c.noSum)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			input: []arg[N]{},
 			expect: output{
@@ -137,15 +144,16 @@ func testDeltaHist[N int64 | float64](c conf[N]) func(t *testing.T) {
 }
 
 func testCumulativeHist[N int64 | float64](c conf[N]) func(t *testing.T) {
-	in, _, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.ExplicitBucketHistogram(bounds, noMinMax, c.noSum)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			input: []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.Histogram[N]{
@@ -162,6 +170,7 @@ func testCumulativeHist[N int64 | float64](c conf[N]) func(t *testing.T) {
 				{ctx, 2, alice},
 				{ctx, 10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Histogram[N]{
@@ -178,6 +187,7 @@ func testCumulativeHist[N int64 | float64](c conf[N]) func(t *testing.T) {
 				{ctx, 2, alice},
 				{ctx, 10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Histogram[N]{
@@ -191,6 +201,7 @@ func testCumulativeHist[N int64 | float64](c conf[N]) func(t *testing.T) {
 		},
 		{
 			input: []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Histogram[N]{
@@ -208,6 +219,7 @@ func testCumulativeHist[N int64 | float64](c conf[N]) func(t *testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Histogram[N]{
@@ -216,6 +228,37 @@ func testCumulativeHist[N int64 | float64](c conf[N]) func(t *testing.T) {
 						c.hPt(fltrAlice, 2, 4, y2kPlus(0), y2kPlus(5)),
 						c.hPt(fltrBob, 10, 3, y2kPlus(0), y2kPlus(5)),
 						c.hPt(overflowSet, 1, 2, y2kPlus(0), y2kPlus(5)),
+					},
+				},
+			},
+		},
+		{
+			input: []arg[N]{},
+			remove: []arg[N]{
+				{ctx, 0, fltrAlice},
+			},
+			expect: output{
+				n: 3,
+				agg: metricdata.Histogram[N]{
+					Temporality: metricdata.CumulativeTemporality,
+					DataPoints: []metricdata.HistogramDataPoint[N]{
+						c.hPtRemoved(fltrAlice, 2, 2, y2kPlus(0), y2kPlus(15)),
+						c.hPt(fltrBob, 10, 3, y2kPlus(0), y2kPlus(15)),
+						c.hPt(overflowSet, 1, 2, y2kPlus(0), y2kPlus(15)),
+					},
+				},
+			},
+		},
+		{
+			input: []arg[N]{},
+			remove: []arg[N]{},
+			expect: output{
+				n: 2,
+				agg: metricdata.Histogram[N]{
+					Temporality: metricdata.CumulativeTemporality,
+					DataPoints: []metricdata.HistogramDataPoint[N]{
+						c.hPt(fltrBob, 10, 3, y2kPlus(0), y2kPlus(16)),
+						c.hPt(overflowSet, 1, 2, y2kPlus(0), y2kPlus(16)),
 					},
 				},
 			},

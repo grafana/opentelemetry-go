@@ -108,8 +108,8 @@ func testBuilderFilter[N int64 | float64]() func(t *testing.T) {
 type arg[N int64 | float64] struct {
 	ctx context.Context
 
-	value N
-	attr  attribute.Set
+	value  N
+	attr   attribute.Set
 }
 
 type output struct {
@@ -119,10 +119,11 @@ type output struct {
 
 type teststep[N int64 | float64] struct {
 	input  []arg[N]
+	remove []arg[N]
 	expect output
 }
 
-func test[N int64 | float64](meas Measure[N], comp ComputeAggregation, steps []teststep[N]) func(*testing.T) {
+func test[N int64 | float64](meas Measure[N], rem Remove, comp ComputeAggregation, steps []teststep[N]) func(*testing.T) {
 	return func(t *testing.T) {
 		t.Helper()
 
@@ -130,6 +131,9 @@ func test[N int64 | float64](meas Measure[N], comp ComputeAggregation, steps []t
 		for i, step := range steps {
 			for _, args := range step.input {
 				meas(args.ctx, args.value, args.attr)
+			}
+			for _, args := range step.remove {
+				rem(args.ctx, args.attr)
 			}
 
 			t.Logf("step: %d", i)

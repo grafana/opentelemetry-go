@@ -62,6 +62,7 @@ type config struct {
 	ignoreTimestamp bool
 	ignoreExemplars bool
 	ignoreValue     bool
+	ignoreNoRecorded bool
 }
 
 func newConfig(opts []Option) config {
