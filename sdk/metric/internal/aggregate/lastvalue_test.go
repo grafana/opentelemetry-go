@@ -35,7 +35,7 @@ func TestLastValue(t *testing.T) {
 }
 
 func testDeltaLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
@@ -139,7 +139,7 @@ func testDeltaLastValue[N int64 | float64]() func(*testing.T) {
 }
 
 func testCumulativeLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
@@ -261,7 +261,7 @@ func testCumulativeLastValue[N int64 | float64]() func(*testing.T) {
 }
 
 func testDeltaPrecomputedLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
@@ -365,7 +365,7 @@ func testDeltaPrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 }
 
 func testCumulativePrecomputedLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,

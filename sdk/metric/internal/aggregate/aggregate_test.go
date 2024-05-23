@@ -139,7 +139,7 @@ func test[N int64 | float64](meas Measure[N], comp ComputeAggregation, steps []t
 	}
 }
 
-func benchmarkAggregate[N int64 | float64](factory func() (Measure[N], ComputeAggregation)) func(*testing.B) {
+func benchmarkAggregate[N int64 | float64](factory func() (Measure[N], Remove, ComputeAggregation)) func(*testing.B) {
 	counts := []int{1, 10, 100}
 	return func(b *testing.B) {
 		for _, n := range counts {
@@ -152,7 +152,7 @@ func benchmarkAggregate[N int64 | float64](factory func() (Measure[N], ComputeAg
 
 var bmarkRes metricdata.Aggregation
 
-func benchmarkAggregateN[N int64 | float64](b *testing.B, factory func() (Measure[N], ComputeAggregation), count int) {
+func benchmarkAggregateN[N int64 | float64](b *testing.B, factory func() (Measure[N], Remove, ComputeAggregation), count int) {
 	ctx := context.Background()
 	attrs := make([]attribute.Set, count)
 	for i := range attrs {
@@ -161,7 +161,7 @@ func benchmarkAggregateN[N int64 | float64](b *testing.B, factory func() (Measur
 
 	b.Run("Measure", func(b *testing.B) {
 		got := &bmarkRes
-		meas, comp := factory()
+		meas, _, comp := factory()
 		b.ReportAllocs()
 		b.ResetTimer()
 
@@ -177,7 +177,7 @@ func benchmarkAggregateN[N int64 | float64](b *testing.B, factory func() (Measur
 	b.Run("ComputeAggregation", func(b *testing.B) {
 		comps := make([]ComputeAggregation, b.N)
 		for n := range comps {
-			meas, comp := factory()
+			meas, _, comp := factory()
 			for _, attr := range attrs {
 				meas(ctx, 1, attr)
 			}

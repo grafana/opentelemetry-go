@@ -40,7 +40,7 @@ func TestSum(t *testing.T) {
 
 func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
@@ -168,7 +168,7 @@ func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 
 func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
@@ -282,7 +282,7 @@ func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 
 func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
@@ -411,7 +411,7 @@ func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 
 func testCumulativePrecomputedSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, _, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
@@ -542,43 +542,43 @@ func BenchmarkSum(b *testing.B) {
 	// The monotonic argument is only used to annotate the Sum returned from
 	// the Aggregation method. It should not have an effect on operational
 	// performance, therefore, only monotonic=false is benchmarked here.
-	b.Run("Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.Sum(false)
 	}))
-	b.Run("Int64/Delta", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Int64/Delta", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.Sum(false)
 	}))
-	b.Run("Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.Sum(false)
 	}))
-	b.Run("Float64/Delta", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Float64/Delta", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.Sum(false)
 	}))
 
-	b.Run("Precomputed/Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Precomputed/Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.PrecomputedSum(false)
 	}))
-	b.Run("Precomputed/Int64/Delta", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Precomputed/Int64/Delta", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.PrecomputedSum(false)
 	}))
-	b.Run("Precomputed/Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Precomputed/Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.PrecomputedSum(false)
 	}))
-	b.Run("Precomputed/Float64/Delta", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Precomputed/Float64/Delta", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.PrecomputedSum(false)
