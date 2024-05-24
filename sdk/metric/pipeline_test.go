@@ -139,7 +139,7 @@ func testDefaultViewImplicit[N int64 | float64]() func(t *testing.T) {
 				var c cache[string, instID]
 				i := newInserter[N](test.pipe, &c)
 				readerAggregation := i.readerDefaultAggregation(inst.Kind)
-				got, err := i.Instrument(inst, readerAggregation)
+				got, _, err := i.Instrument(inst, readerAggregation)
 				require.NoError(t, err)
 				assert.Len(t, got, 1, "default view not applied")
 				for _, in := range got {
@@ -366,7 +366,7 @@ func TestInserterCachedAggregatorNameConflict(t *testing.T) {
 	i := newInserter[int64](pipe, &vc)
 
 	readerAggregation := i.readerDefaultAggregation(kind)
-	_, origID, err := i.cachedAggregator(scope, kind, stream, readerAggregation)
+	_, _, origID, err := i.cachedAggregator(scope, kind, stream, readerAggregation)
 	require.NoError(t, err)
 
 	require.Len(t, pipe.aggregations, 1)
@@ -376,7 +376,7 @@ func TestInserterCachedAggregatorNameConflict(t *testing.T) {
 	require.Equal(t, name, iSync[0].name)
 
 	stream.Name = "RequestCount"
-	_, id, err := i.cachedAggregator(scope, kind, stream, readerAggregation)
+	_, _, id, err := i.cachedAggregator(scope, kind, stream, readerAggregation)
 	require.NoError(t, err)
 	assert.Equal(t, origID, id, "multiple aggregators for equivalent name")
 
