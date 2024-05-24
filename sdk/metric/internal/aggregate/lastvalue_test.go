@@ -35,13 +35,13 @@ func TestLastValue(t *testing.T) {
 }
 
 func testDeltaLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.LastValue()
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			// Empty output if nothing is measured.
 			input:  []arg[N]{},
@@ -54,6 +54,7 @@ func testDeltaLastValue[N int64 | float64]() func(*testing.T) {
 				{ctx, 2, alice},
 				{ctx, -10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Gauge[N]{
@@ -76,12 +77,14 @@ func testDeltaLastValue[N int64 | float64]() func(*testing.T) {
 		}, {
 			// Everything resets, do not report old measurements.
 			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{n: 0, agg: metricdata.Gauge[N]{}},
 		}, {
 			input: []arg[N]{
 				{ctx, 10, alice},
 				{ctx, 3, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Gauge[N]{
@@ -109,6 +112,7 @@ func testDeltaLastValue[N int64 | float64]() func(*testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Gauge[N]{
@@ -139,13 +143,13 @@ func testDeltaLastValue[N int64 | float64]() func(*testing.T) {
 }
 
 func testCumulativeLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.LastValue()
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			// Empty output if nothing is measured.
 			input:  []arg[N]{},
@@ -256,18 +260,70 @@ func testCumulativeLastValue[N int64 | float64]() func(*testing.T) {
 					},
 				},
 			},
+		}, {
+			input: []arg[N]{},
+			remove: []arg[N]{
+				{ctx, 1, fltrBob},
+			},
+			expect: output{
+				n: 3,
+				agg: metricdata.Gauge[N]{
+					DataPoints: []metricdata.DataPoint[N]{
+						{
+							Attributes: fltrAlice,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(8),
+							Value:      1,
+						},
+						{
+							Attributes:      fltrBob,
+							StartTime:       y2kPlus(0),
+							Time:            y2kPlus(9),
+							NoRecordedValue: true,
+						},
+						{
+							Attributes: overflowSet,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(11),
+							Value:      1,
+						},
+					},
+				},
+			},
+		}, {
+			input:  []arg[N]{},
+			remove: []arg[N]{},
+			expect: output{
+				n: 2,
+				agg: metricdata.Gauge[N]{
+					DataPoints: []metricdata.DataPoint[N]{
+						{
+							Attributes: fltrAlice,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(8),
+							Value:      1,
+						},
+						{
+							Attributes: overflowSet,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(11),
+							Value:      1,
+						},
+					},
+				},
+			},
 		},
 	})
 }
 
 func testDeltaPrecomputedLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.PrecomputedLastValue()
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			// Empty output if nothing is measured.
 			input:  []arg[N]{},
@@ -280,6 +336,7 @@ func testDeltaPrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 				{ctx, 2, alice},
 				{ctx, -10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Gauge[N]{
@@ -302,12 +359,14 @@ func testDeltaPrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 		}, {
 			// Everything resets, do not report old measurements.
 			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{n: 0, agg: metricdata.Gauge[N]{}},
 		}, {
 			input: []arg[N]{
 				{ctx, 10, alice},
 				{ctx, 3, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Gauge[N]{
@@ -335,6 +394,7 @@ func testDeltaPrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Gauge[N]{
@@ -365,13 +425,13 @@ func testDeltaPrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 }
 
 func testCumulativePrecomputedLastValue[N int64 | float64]() func(*testing.T) {
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.PrecomputedLastValue()
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			// Empty output if nothing is measured.
 			input:  []arg[N]{},
@@ -384,6 +444,7 @@ func testCumulativePrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 				{ctx, 2, alice},
 				{ctx, -10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Gauge[N]{
@@ -406,12 +467,14 @@ func testCumulativePrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 		}, {
 			// Everything resets, do not report old measurements.
 			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{n: 0, agg: metricdata.Gauge[N]{}},
 		}, {
 			input: []arg[N]{
 				{ctx, 10, alice},
 				{ctx, 3, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Gauge[N]{
@@ -439,6 +502,7 @@ func testCumulativePrecomputedLastValue[N int64 | float64]() func(*testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Gauge[N]{

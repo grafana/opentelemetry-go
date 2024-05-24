@@ -40,13 +40,13 @@ func TestSum(t *testing.T) {
 
 func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.Sum(mono)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			input: []arg[N]{},
 			expect: output{
@@ -66,6 +66,7 @@ func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 2, alice},
 				{ctx, -10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -93,6 +94,7 @@ func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 10, alice},
 				{ctx, 3, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -118,6 +120,7 @@ func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 		{
 			input: []arg[N]{},
 			// Delta sums are expected to reset.
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.Sum[N]{
@@ -135,6 +138,7 @@ func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Sum[N]{
@@ -168,15 +172,16 @@ func testDeltaSum[N int64 | float64]() func(t *testing.T) {
 
 func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.Sum(mono)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.Sum[N]{
@@ -194,6 +199,7 @@ func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 2, alice},
 				{ctx, -10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -221,6 +227,7 @@ func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 10, alice},
 				{ctx, 3, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -249,6 +256,7 @@ func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Sum[N]{
@@ -277,20 +285,79 @@ func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 				},
 			},
 		},
+		{
+			input: []arg[N]{},
+			remove: []arg[N]{
+				{ctx, 0, fltrBob},
+			},
+			expect: output{
+				n: 3,
+				agg: metricdata.Sum[N]{
+					IsMonotonic: mono,
+					Temporality: metricdata.CumulativeTemporality,
+					DataPoints: []metricdata.DataPoint[N]{
+						{
+							Attributes: fltrAlice,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(14),
+							Value:      14,
+						},
+						{
+							Attributes:      fltrBob,
+							StartTime:       y2kPlus(0),
+							Time:            y2kPlus(14),
+							NoRecordedValue: true,
+						},
+						{
+							Attributes: overflowSet,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(14),
+							Value:      2,
+						},
+					},
+				},
+			},
+		},
+		{
+			input:  []arg[N]{},
+			remove: []arg[N]{},
+			expect: output{
+				n: 2,
+				agg: metricdata.Sum[N]{
+					IsMonotonic: mono,
+					Temporality: metricdata.CumulativeTemporality,
+					DataPoints: []metricdata.DataPoint[N]{
+						{
+							Attributes: fltrAlice,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(15),
+							Value:      14,
+						},
+						{
+							Attributes: overflowSet,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(15),
+							Value:      2,
+						},
+					},
+				},
+			},
+		},
 	})
 }
 
 func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.PrecomputedSum(mono)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.Sum[N]{
@@ -308,6 +375,7 @@ func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 2, alice},
 				{ctx, -10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -336,6 +404,7 @@ func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 10, alice},
 				{ctx, 3, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -361,6 +430,7 @@ func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 		{
 			input: []arg[N]{},
 			// Precomputed sums are expected to reset.
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.Sum[N]{
@@ -378,6 +448,7 @@ func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Sum[N]{
@@ -411,15 +482,16 @@ func testDeltaPrecomputedSum[N int64 | float64]() func(t *testing.T) {
 
 func testCumulativePrecomputedSum[N int64 | float64]() func(t *testing.T) {
 	mono := false
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 3,
 	}.PrecomputedSum(mono)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.Sum[N]{
@@ -437,6 +509,7 @@ func testCumulativePrecomputedSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 2, alice},
 				{ctx, -10, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -465,6 +538,7 @@ func testCumulativePrecomputedSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 10, alice},
 				{ctx, 3, bob},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.Sum[N]{
@@ -490,6 +564,7 @@ func testCumulativePrecomputedSum[N int64 | float64]() func(t *testing.T) {
 		{
 			input: []arg[N]{},
 			// Precomputed sums are expected to reset.
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.Sum[N]{
@@ -507,6 +582,7 @@ func testCumulativePrecomputedSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 1, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 3,
 				agg: metricdata.Sum[N]{
@@ -542,43 +618,43 @@ func BenchmarkSum(b *testing.B) {
 	// The monotonic argument is only used to annotate the Sum returned from
 	// the Aggregation method. It should not have an effect on operational
 	// performance, therefore, only monotonic=false is benchmarked here.
-	b.Run("Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.Sum(false)
 	}))
-	b.Run("Int64/Delta", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Int64/Delta", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.Sum(false)
 	}))
-	b.Run("Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.Sum(false)
 	}))
-	b.Run("Float64/Delta", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Float64/Delta", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.Sum(false)
 	}))
 
-	b.Run("Precomputed/Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Precomputed/Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.PrecomputedSum(false)
 	}))
-	b.Run("Precomputed/Int64/Delta", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Precomputed/Int64/Delta", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.PrecomputedSum(false)
 	}))
-	b.Run("Precomputed/Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Precomputed/Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.PrecomputedSum(false)
 	}))
-	b.Run("Precomputed/Float64/Delta", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Precomputed/Float64/Delta", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.PrecomputedSum(false)

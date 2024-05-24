@@ -680,22 +680,22 @@ func BenchmarkExponentialHistogram(b *testing.B) {
 		noSum    = false
 	)
 
-	b.Run("Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Int64/Cumulative", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.ExponentialBucketHistogram(maxSize, maxScale, noMinMax, noSum)
 	}))
-	b.Run("Int64/Delta", benchmarkAggregate(func() (Measure[int64], ComputeAggregation) {
+	b.Run("Int64/Delta", benchmarkAggregate(func() (Measure[int64], Remove, ComputeAggregation) {
 		return Builder[int64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.ExponentialBucketHistogram(maxSize, maxScale, noMinMax, noSum)
 	}))
-	b.Run("Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Float64/Cumulative", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.CumulativeTemporality,
 		}.ExponentialBucketHistogram(maxSize, maxScale, noMinMax, noSum)
 	}))
-	b.Run("Float64/Delta", benchmarkAggregate(func() (Measure[float64], ComputeAggregation) {
+	b.Run("Float64/Delta", benchmarkAggregate(func() (Measure[float64], Remove, ComputeAggregation) {
 		return Builder[float64]{
 			Temporality: metricdata.DeltaTemporality,
 		}.ExponentialBucketHistogram(maxSize, maxScale, noMinMax, noSum)
@@ -743,13 +743,13 @@ func TestExponentialHistogramAggregation(t *testing.T) {
 }
 
 func testDeltaExpoHist[N int64 | float64]() func(t *testing.T) {
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.DeltaTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 2,
 	}.ExponentialBucketHistogram(4, 20, false, false)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
 			input: []arg[N]{},
 			expect: output{
@@ -770,6 +770,7 @@ func testDeltaExpoHist[N int64 | float64]() func(t *testing.T) {
 				{ctx, 1, alice},
 				{ctx, -1, alice},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 1,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -799,7 +800,8 @@ func testDeltaExpoHist[N int64 | float64]() func(t *testing.T) {
 		},
 		{
 			// Delta sums are expected to reset.
-			input: []arg[N]{},
+			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -825,6 +827,7 @@ func testDeltaExpoHist[N int64 | float64]() func(t *testing.T) {
 				{ctx, 1, dave},
 				{ctx, -1, alice},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -870,15 +873,16 @@ func testDeltaExpoHist[N int64 | float64]() func(t *testing.T) {
 }
 
 func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
-	in, out := Builder[N]{
+	in, remove, out := Builder[N]{
 		Temporality:      metricdata.CumulativeTemporality,
 		Filter:           attrFltr,
 		AggregationLimit: 2,
 	}.ExponentialBucketHistogram(4, 20, false, false)
 	ctx := context.Background()
-	return test[N](in, out, []teststep[N]{
+	return test[N](in, remove, out, []teststep[N]{
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 0,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -897,6 +901,7 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 				{ctx, 1, alice},
 				{ctx, -1, alice},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 1,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -930,6 +935,7 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 				{ctx, 3, alice},
 				{ctx, 8, alice},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 1,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -958,7 +964,8 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 			},
 		},
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
+			remove: []arg[N]{},
 			expect: output{
 				n: 1,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -996,6 +1003,7 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 				{ctx, 16, carol},
 				{ctx, 1, dave},
 			},
+			remove: []arg[N]{},
 			expect: output{
 				n: 2,
 				agg: metricdata.ExponentialHistogram[N]{
@@ -1023,6 +1031,79 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 							Attributes: overflowSet,
 							StartTime:  y2kPlus(0),
 							Time:       y2kPlus(21),
+							Count:      6,
+							Min:        metricdata.NewExtrema[N](1),
+							Max:        metricdata.NewExtrema[N](16),
+							Sum:        31,
+							Scale:      -1,
+							PositiveBucket: metricdata.ExponentialBucket{
+								Offset: -1,
+								Counts: []uint64{1, 4, 1},
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			input: []arg[N]{},
+			remove: []arg[N]{
+				{ctx, 0, fltrAlice},
+			},
+			expect: output{
+				n: 2,
+				agg: metricdata.ExponentialHistogram[N]{
+					Temporality: metricdata.CumulativeTemporality,
+					DataPoints: []metricdata.ExponentialHistogramDataPoint[N]{
+						{
+							Attributes: fltrAlice,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(22),
+							Count:      1,
+							Min:        metricdata.NewExtrema[N](-1),
+							Max:        metricdata.NewExtrema[N](16),
+							Sum:        31,
+							Scale:      -1,
+							PositiveBucket: metricdata.ExponentialBucket{
+								Offset: -1,
+								Counts: []uint64{1, 6, 2},
+							},
+							NegativeBucket: metricdata.ExponentialBucket{
+								Offset: -1,
+								Counts: []uint64{1},
+							},
+							NoRecordedValue: true,
+						},
+						{
+							Attributes: overflowSet,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(22),
+							Count:      6,
+							Min:        metricdata.NewExtrema[N](1),
+							Max:        metricdata.NewExtrema[N](16),
+							Sum:        31,
+							Scale:      -1,
+							PositiveBucket: metricdata.ExponentialBucket{
+								Offset: -1,
+								Counts: []uint64{1, 4, 1},
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			input:  []arg[N]{},
+			remove: []arg[N]{},
+			expect: output{
+				n: 1,
+				agg: metricdata.ExponentialHistogram[N]{
+					Temporality: metricdata.CumulativeTemporality,
+					DataPoints: []metricdata.ExponentialHistogramDataPoint[N]{
+						{
+							Attributes: overflowSet,
+							StartTime:  y2kPlus(0),
+							Time:       y2kPlus(23),
 							Count:      6,
 							Min:        metricdata.NewExtrema[N](1),
 							Max:        metricdata.NewExtrema[N](16),
