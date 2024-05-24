@@ -179,6 +179,10 @@ func (i *testCountingFloatInstrument) Record(context.Context, float64, ...metric
 	i.count++
 }
 
+func (i *testCountingFloatInstrument) Remove(context.Context, ...metric.RemoveOption) {
+	i.count--
+}
+
 type testCountingIntInstrument struct {
 	count int
 
@@ -202,4 +206,8 @@ func (i *testCountingIntInstrument) Add(context.Context, int64, ...metric.AddOpt
 
 func (i *testCountingIntInstrument) Record(context.Context, int64, ...metric.RecordOption) {
 	i.count++
+}
+
+func (i *testCountingIntInstrument) Remove(context.Context, ...metric.RemoveOption) {
+	i.count--
 }
