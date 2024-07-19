@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package trace // import "go.opentelemetry.io/otel/sdk/trace"
+package trace // import "github.com/grafana/opentelemetry-go/sdk/trace"
 
 import (
 	"context"
@@ -15,14 +15,14 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/internal/global"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-	"go.opentelemetry.io/otel/trace/embedded"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/codes"
+	"github.com/grafana/opentelemetry-go/internal/global"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
+	"github.com/grafana/opentelemetry-go/trace"
+	"github.com/grafana/opentelemetry-go/trace/embedded"
 )
 
 // ReadOnlySpan allows reading information from the data structure underlying a

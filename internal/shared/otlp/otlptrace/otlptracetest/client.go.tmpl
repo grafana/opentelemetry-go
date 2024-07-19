@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace"
 )
 
 func RunExporterShutdownTest(t *testing.T, factory func() otlptrace.Client) {

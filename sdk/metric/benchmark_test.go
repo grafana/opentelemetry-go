@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package metric // import "go.opentelemetry.io/otel/sdk/metric"
+package metric // import "github.com/grafana/opentelemetry-go/sdk/metric"
 
 import (
 	"context"
@@ -12,10 +12,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/metric"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 var viewBenchmarks = []struct {

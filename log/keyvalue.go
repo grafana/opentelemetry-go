@@ -3,7 +3,7 @@
 
 //go:generate stringer -type=Kind -trimprefix=Kind
 
-package log // import "go.opentelemetry.io/otel/log"
+package log // import "github.com/grafana/opentelemetry-go/log"
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 	"strconv"
 	"unsafe"
 
-	"go.opentelemetry.io/otel/internal/global"
+	"github.com/grafana/opentelemetry-go/internal/global"
 )
 
 // errKind is logged when a Value is decoded to an incompatible type.
@@ -314,7 +314,7 @@ func (v Value) String() string {
 }
 
 // A KeyValue is a key-value pair used to represent a log attribute (a
-// superset of [go.opentelemetry.io/otel/attribute.KeyValue]) and map item.
+// superset of [github.com/grafana/opentelemetry-go/attribute.KeyValue]) and map item.
 type KeyValue struct {
 	Key   string
 	Value Value

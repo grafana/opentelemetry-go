@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package stdoutlog // import "go.opentelemetry.io/otel/exporters/stdout/stdoutlog"
+package stdoutlog // import "github.com/grafana/opentelemetry-go/exporters/stdout/stdoutlog"
 
 import (
 	"context"
 	"encoding/json"
 	"sync/atomic"
 
-	"go.opentelemetry.io/otel/sdk/log"
+	"github.com/grafana/opentelemetry-go/sdk/log"
 )
 
 var _ log.Exporter = &Exporter{}

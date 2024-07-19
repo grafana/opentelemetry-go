@@ -15,10 +15,10 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/exporters/prometheus"
-	api "go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/sdk/metric"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/exporters/prometheus"
+	api "github.com/grafana/opentelemetry-go/metric"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
 )
 
 const meterName = "github.com/open-telemetry/opentelemetry-go/example/prometheus"

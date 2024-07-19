@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package zipkin // import "go.opentelemetry.io/otel/exporters/zipkin"
+package zipkin // import "github.com/grafana/opentelemetry-go/exporters/zipkin"
 
 import (
 	"encoding/binary"
@@ -13,15 +13,15 @@ import (
 
 	zkmodel "github.com/openzipkin/zipkin-go/model"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/sdk/resource"
-	tracesdk "go.opentelemetry.io/otel/sdk/trace"
-	semconv120 "go.opentelemetry.io/otel/semconv/v1.20.0"
-	semconv121 "go.opentelemetry.io/otel/semconv/v1.21.0"
-	semconv125 "go.opentelemetry.io/otel/semconv/v1.25.0"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/codes"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
+	tracesdk "github.com/grafana/opentelemetry-go/sdk/trace"
+	semconv120 "github.com/grafana/opentelemetry-go/semconv/v1.20.0"
+	semconv121 "github.com/grafana/opentelemetry-go/semconv/v1.21.0"
+	semconv125 "github.com/grafana/opentelemetry-go/semconv/v1.25.0"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 const (
@@ -225,7 +225,7 @@ func toZipkinTags(data tracesdk.ReadOnlySpan) map[string]string {
 }
 
 // Rank determines selection order for remote endpoint. See the specification
-// https://github.com/open-telemetry/opentelemetry-specification/blob/v1.28.0/specification/trace/sdk_exporters/zipkin.md#otlp---zipkin
+// https://github.com/open-telemetry/opentelemetry-specification/blob/v1.28.0-grafana.5-renamed/specification/trace/sdk_exporters/zipkin.md#otlp---zipkin
 var remoteEndpointKeyRank = map[attribute.Key]int{
 	semconv.PeerServiceKey:            1,
 	semconv.ServerAddressKey:          2,

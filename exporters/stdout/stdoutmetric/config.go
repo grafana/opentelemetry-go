@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package stdoutmetric // import "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
+package stdoutmetric // import "github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric"
 
 import (
 	"encoding/json"
 	"io"
 	"os"
 
-	"go.opentelemetry.io/otel/sdk/metric"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
 )
 
 // config contains options for the exporter.
@@ -90,7 +90,7 @@ func WithPrettyPrint() Option {
 // WithTemporalitySelector sets the TemporalitySelector the exporter will use
 // to determine the Temporality of an instrument based on its kind. If this
 // option is not used, the exporter will use the DefaultTemporalitySelector
-// from the go.opentelemetry.io/otel/sdk/metric package.
+// from the github.com/grafana/opentelemetry-go/sdk/metric package.
 func WithTemporalitySelector(selector metric.TemporalitySelector) Option {
 	return temporalitySelectorOption{selector: selector}
 }
@@ -107,7 +107,7 @@ func (t temporalitySelectorOption) apply(c config) config {
 // WithAggregationSelector sets the AggregationSelector the exporter will use
 // to determine the aggregation to use for an instrument based on its kind. If
 // this option is not used, the exporter will use the
-// DefaultAggregationSelector from the go.opentelemetry.io/otel/sdk/metric
+// DefaultAggregationSelector from the github.com/grafana/opentelemetry-go/sdk/metric
 // package or the aggregation explicitly passed for a view matching an
 // instrument.
 func WithAggregationSelector(selector metric.AggregationSelector) Option {

@@ -4,7 +4,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlpconfig // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal/otlpconfig"
+package otlpconfig // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal/otlpconfig"
 
 import (
 	"crypto/tls"
@@ -21,9 +21,9 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/encoding/gzip"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal/retry"
-	"go.opentelemetry.io/otel/internal/global"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal/retry"
+	"github.com/grafana/opentelemetry-go/internal/global"
 )
 
 const (

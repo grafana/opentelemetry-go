@@ -4,7 +4,7 @@
 /*
 Package otlptrace contains abstractions for OTLP span exporters.
 See the official OTLP span exporter implementations:
-  - [go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc],
-  - [go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp].
+  - [github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc],
+  - [github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp].
 */
-package otlptrace // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+package otlptrace // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace"

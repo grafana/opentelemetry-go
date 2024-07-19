@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package oc2otel // import "go.opentelemetry.io/otel/bridge/opencensus/internal/oc2otel"
+package oc2otel // import "github.com/grafana/opentelemetry-go/bridge/opencensus/internal/oc2otel"
 
 import (
 	"fmt"
 
 	octrace "go.opencensus.io/trace"
 
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 func StartOptions(optFuncs []octrace.StartOption) ([]trace.SpanStartOption, error) {

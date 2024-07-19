@@ -1,13 +1,13 @@
-module go.opentelemetry.io/otel/trace
+module github.com/grafana/opentelemetry-go/trace
 
 go 1.21
 
-replace go.opentelemetry.io/otel => ../
+replace github.com/grafana/opentelemetry-go => ../
 
 require (
 	github.com/google/go-cmp v0.6.0
+	github.com/grafana/opentelemetry-go v1.28.0-grafana.5-renamed
 	github.com/stretchr/testify v1.9.0
-	go.opentelemetry.io/otel v1.28.0
 )
 
 require (
@@ -16,4 +16,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace go.opentelemetry.io/otel/metric => ../metric
+replace github.com/grafana/opentelemetry-go/metric => ../metric

@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlploghttp // import "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
+package otlploghttp // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploghttp"
 
 import (
 	"context"
 	"sync/atomic"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp/internal/transform"
-	"go.opentelemetry.io/otel/sdk/log"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploghttp/internal/transform"
+	"github.com/grafana/opentelemetry-go/sdk/log"
 )
 
 // Exporter is a OpenTelemetry log Exporter. It transports log data encoded as

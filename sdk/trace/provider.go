@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package trace // import "go.opentelemetry.io/otel/sdk/trace"
+package trace // import "github.com/grafana/opentelemetry-go/sdk/trace"
 
 import (
 	"context"
@@ -9,17 +9,17 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/internal/global"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	"go.opentelemetry.io/otel/sdk/resource"
-	"go.opentelemetry.io/otel/trace"
-	"go.opentelemetry.io/otel/trace/embedded"
-	"go.opentelemetry.io/otel/trace/noop"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/internal/global"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
+	"github.com/grafana/opentelemetry-go/trace"
+	"github.com/grafana/opentelemetry-go/trace/embedded"
+	"github.com/grafana/opentelemetry-go/trace/noop"
 )
 
 const (
-	defaultTracerName = "go.opentelemetry.io/otel/sdk/tracer"
+	defaultTracerName = "github.com/grafana/opentelemetry-go/sdk/tracer"
 )
 
 // tracerProviderConfig.

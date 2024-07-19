@@ -2,7 +2,7 @@
 
 ## Abstract
 
-`go.opentelemetry.io/otel/log` provides
+`github.com/grafana/opentelemetry-go/log` provides
 [Logs Bridge API](https://opentelemetry.io/docs/specs/otel/logs/bridge-api/).
 
 The prototype was created in
@@ -24,7 +24,7 @@ This proposed design aims to:
 
 ### Module structure
 
-The API is published as a single `go.opentelemetry.io/otel/log` Go module.
+The API is published as a single `github.com/grafana/opentelemetry-go/log` Go module.
 
 The module name is compliant with
 [Artifact Naming](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/bridge-api.md#artifact-naming)
@@ -32,9 +32,9 @@ and the package structure is the same as for Trace API and Metrics API.
 
 The Go module consists of the following packages:
 
-- `go.opentelemetry.io/otel/log`
-- `go.opentelemetry.io/otel/log/embedded`
-- `go.opentelemetry.io/otel/log/noop`
+- `github.com/grafana/opentelemetry-go/log`
+- `github.com/grafana/opentelemetry-go/log/embedded`
+- `github.com/grafana/opentelemetry-go/log/noop`
 
 Rejected alternative:
 
@@ -186,15 +186,15 @@ are defined in [keyvalue.go](keyvalue.go).
 `KindSlice` is used for a slice of values (in spec: an array (a list) of any values).
 `KindMap` is used for a slice of key-value pairs (in spec: `map<string, any>`).
 
-These types are defined in `go.opentelemetry.io/otel/log` package
+These types are defined in `github.com/grafana/opentelemetry-go/log` package
 as they are tightly coupled with the API and different from common attributes.
 
 The internal implementation of `Value` is based on
 [`slog.Value`](https://pkg.go.dev/log/slog#Value)
 and the API is mostly inspired by
-[`attribute.Value`](https://pkg.go.dev/go.opentelemetry.io/otel/attribute#Value).
+[`attribute.Value`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/attribute#Value).
 The benchmarks[^1] show that the implementation is more performant than
-[`attribute.Value`](https://pkg.go.dev/go.opentelemetry.io/otel/attribute#Value).
+[`attribute.Value`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/attribute#Value).
 
 The value accessors (`func (v Value) As[Kind]` methods) must not panic,
 as it would violate the [specification](https://opentelemetry.io/docs/specs/otel/error-handling/):
@@ -255,7 +255,7 @@ Rejected alternatives:
 
 ### noop package
 
-The `go.opentelemetry.io/otel/log/noop` package provides
+The `github.com/grafana/opentelemetry-go/log/noop` package provides
 [Logs Bridge API No-Op Implementation](https://opentelemetry.io/docs/specs/otel/logs/noop/).
 
 ### Trace context correlation
@@ -266,8 +266,8 @@ so it can later be passed via `Logger.Emit`.
 
 It is not expected that users (caller or bridge implementation) reconstruct
 a `context.Context`. Reconstructing a `context.Context` with
-[`trace.ContextWithSpanContext`](https://pkg.go.dev/go.opentelemetry.io/otel/trace#ContextWithSpanContext)
-and [`trace.NewSpanContext`](https://pkg.go.dev/go.opentelemetry.io/otel/trace#NewSpanContext)
+[`trace.ContextWithSpanContext`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/trace#ContextWithSpanContext)
+and [`trace.NewSpanContext`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/trace#NewSpanContext)
 would usually involve more memory allocations.
 
 The logging libraries which have recording methods that accepts `context.Context`,
@@ -318,7 +318,7 @@ You can read more about OpenTelemetry Logs design on [opentelemetry.io](https://
 Log record is a value object without any behavior.
 It is used as data input for Logger methods.
 
-The log record resembles the instrument config structs like [metric.Float64CounterConfig](https://pkg.go.dev/go.opentelemetry.io/otel/metric#Float64CounterConfig).
+The log record resembles the instrument config structs like [metric.Float64CounterConfig](https://pkg.go.dev/github.com/grafana/opentelemetry-go/metric#Float64CounterConfig).
 
 Using `struct` instead of `interface` improves the performance as e.g.
 indirect calls are less optimized,
@@ -336,7 +336,7 @@ type Logger interface{
 ```
 
 The main reason was that design would be similar
-to the [Meter API](https://pkg.go.dev/go.opentelemetry.io/otel/metric#Meter)
+to the [Meter API](https://pkg.go.dev/github.com/grafana/opentelemetry-go/metric#Meter)
 for creating instruments.
 
 However, passing `Record` directly, instead of using options,
@@ -496,7 +496,7 @@ when the other is already set would be unpleasant.
 ## Reuse attribute package
 
 It was tempting to reuse the existing
-[https://pkg.go.dev/go.opentelemetry.io/otel/attribute] package
+[https://pkg.go.dev/github.com/grafana/opentelemetry-go/attribute] package
 for defining log attributes and body.
 
 However, this would be wrong because [the log attribute definition](https://opentelemetry.io/docs/specs/otel/logs/data-model/#field-attributes)

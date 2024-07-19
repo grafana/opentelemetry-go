@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package log // import "go.opentelemetry.io/otel/sdk/log"
+package log // import "github.com/grafana/opentelemetry-go/sdk/log"
 
 import (
 	"context"
@@ -10,8 +10,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/log"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
 )
 
 func BenchmarkLoggerNewRecord(b *testing.B) {

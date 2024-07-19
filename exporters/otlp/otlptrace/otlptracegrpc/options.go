@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlptracegrpc // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+package otlptracegrpc // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc"
 
 import (
 	"fmt"
@@ -10,9 +10,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal/otlpconfig"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal/retry"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal/otlpconfig"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal/retry"
 )
 
 // Option applies an option to the gRPC driver.

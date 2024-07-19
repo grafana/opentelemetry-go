@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/log"
+	"github.com/grafana/opentelemetry-go/log"
 )
 
 var y2k = time.Date(2000, time.January, 1, 0, 0, 0, 0, time.UTC)

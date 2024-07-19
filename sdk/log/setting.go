@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package log // import "go.opentelemetry.io/otel/sdk/log"
+package log // import "github.com/grafana/opentelemetry-go/sdk/log"
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"go.opentelemetry.io/otel"
+	otel "github.com/grafana/opentelemetry-go"
 )
 
 // setting is a configuration setting value.

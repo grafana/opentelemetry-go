@@ -3,47 +3,47 @@
 
 module-sets:
   stable-v1:
-    version: v1.28.0
+    version: v1.28.0-grafana.5-renamed
     modules:
-      - go.opentelemetry.io/otel
-      - go.opentelemetry.io/otel/bridge/opencensus
-      - go.opentelemetry.io/otel/bridge/opencensus/test
-      - go.opentelemetry.io/otel/bridge/opentracing
-      - go.opentelemetry.io/otel/bridge/opentracing/test
-      - go.opentelemetry.io/otel/example/dice
-      - go.opentelemetry.io/otel/example/namedtracer
-      - go.opentelemetry.io/otel/example/opencensus
-      - go.opentelemetry.io/otel/example/otel-collector
-      - go.opentelemetry.io/otel/example/passthrough
-      - go.opentelemetry.io/otel/example/zipkin
-      - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc
-      - go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
-      - go.opentelemetry.io/otel/exporters/otlp/otlptrace
-      - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
-      - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
-      - go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
-      - go.opentelemetry.io/otel/exporters/stdout/stdouttrace
-      - go.opentelemetry.io/otel/exporters/zipkin
-      - go.opentelemetry.io/otel/metric
-      - go.opentelemetry.io/otel/sdk
-      - go.opentelemetry.io/otel/sdk/metric
-      - go.opentelemetry.io/otel/trace
+      - github.com/grafana/opentelemetry-go
+      - github.com/grafana/opentelemetry-go/bridge/opencensus
+      - github.com/grafana/opentelemetry-go/bridge/opencensus/test
+      - github.com/grafana/opentelemetry-go/bridge/opentracing
+      - github.com/grafana/opentelemetry-go/bridge/opentracing/test
+      - github.com/grafana/opentelemetry-go/example/dice
+      - github.com/grafana/opentelemetry-go/example/namedtracer
+      - github.com/grafana/opentelemetry-go/example/opencensus
+      - github.com/grafana/opentelemetry-go/example/otel-collector
+      - github.com/grafana/opentelemetry-go/example/passthrough
+      - github.com/grafana/opentelemetry-go/example/zipkin
+      - github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetricgrpc
+      - github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp
+      - github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace
+      - github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc
+      - github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp
+      - github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric
+      - github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace
+      - github.com/grafana/opentelemetry-go/exporters/zipkin
+      - github.com/grafana/opentelemetry-go/metric
+      - github.com/grafana/opentelemetry-go/sdk
+      - github.com/grafana/opentelemetry-go/sdk/metric
+      - github.com/grafana/opentelemetry-go/trace
   experimental-metrics:
     version: v0.50.0
     modules:
-      - go.opentelemetry.io/otel/example/prometheus
-      - go.opentelemetry.io/otel/exporters/prometheus
+      - github.com/grafana/opentelemetry-go/example/prometheus
+      - github.com/grafana/opentelemetry-go/exporters/prometheus
   experimental-logs:
     version: v0.4.0
     modules:
-      - go.opentelemetry.io/otel/log
-      - go.opentelemetry.io/otel/sdk/log
-      - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
-      - go.opentelemetry.io/otel/exporters/stdout/stdoutlog
+      - github.com/grafana/opentelemetry-go/log
+      - github.com/grafana/opentelemetry-go/sdk/log
+      - github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploghttp
+      - github.com/grafana/opentelemetry-go/exporters/stdout/stdoutlog
   experimental-schema:
     version: v0.0.8
     modules:
-      - go.opentelemetry.io/otel/schema
+      - github.com/grafana/opentelemetry-go/schema
 excluded-modules:
-  - go.opentelemetry.io/otel/internal/tools
-  - go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc
+  - github.com/grafana/opentelemetry-go/internal/tools
+  - github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploggrpc

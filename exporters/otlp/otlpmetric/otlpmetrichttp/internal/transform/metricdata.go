@@ -6,13 +6,14 @@
 
 // Package transform provides transformation functionality from the
 // sdk/metric/metricdata data-types into OTLP data-types.
-package transform // import "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp/internal/transform"
+package transform // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp/internal/transform"
 
 import (
 	"fmt"
 	"time"
 
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
+
 	cpb "go.opentelemetry.io/proto/otlp/common/v1"
 	mpb "go.opentelemetry.io/proto/otlp/metrics/v1"
 	rpb "go.opentelemetry.io/proto/otlp/resource/v1"

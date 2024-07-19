@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package log // import "go.opentelemetry.io/otel/sdk/log"
+package log // import "github.com/grafana/opentelemetry-go/sdk/log"
 
 import (
 	"slices"
@@ -10,11 +10,11 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"go.opentelemetry.io/otel/internal/global"
-	"go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	"go.opentelemetry.io/otel/sdk/resource"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/internal/global"
+	"github.com/grafana/opentelemetry-go/log"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 // attributesInlineCount is the number of attributes that are efficiently

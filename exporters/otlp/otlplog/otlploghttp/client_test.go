@@ -31,14 +31,15 @@ import (
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 
-	"go.opentelemetry.io/otel"
+	otel "github.com/grafana/opentelemetry-go"
+
 	collogpb "go.opentelemetry.io/proto/otlp/collector/logs/v1"
 	cpb "go.opentelemetry.io/proto/otlp/common/v1"
 	lpb "go.opentelemetry.io/proto/otlp/logs/v1"
 	rpb "go.opentelemetry.io/proto/otlp/resource/v1"
 
-	"go.opentelemetry.io/otel/sdk/log"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	"github.com/grafana/opentelemetry-go/sdk/log"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
 )
 
 var (

@@ -11,8 +11,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
-	"go.opentelemetry.io/otel/sdk/resource"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
 )
 
 type reader struct {

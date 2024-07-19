@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package opentracing // import "go.opentelemetry.io/otel/bridge/opentracing"
+package opentracing // import "github.com/grafana/opentelemetry-go/bridge/opentracing"
 
 import (
 	"context"
@@ -13,15 +13,15 @@ import (
 	otext "github.com/opentracing/opentracing-go/ext"
 	otlog "github.com/opentracing/opentracing-go/log"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/baggage"
-	"go.opentelemetry.io/otel/bridge/opentracing/migration"
-	"go.opentelemetry.io/otel/codes"
-	iBaggage "go.opentelemetry.io/otel/internal/baggage"
-	"go.opentelemetry.io/otel/propagation"
-	"go.opentelemetry.io/otel/trace"
-	"go.opentelemetry.io/otel/trace/noop"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/baggage"
+	"github.com/grafana/opentelemetry-go/bridge/opentracing/migration"
+	"github.com/grafana/opentelemetry-go/codes"
+	iBaggage "github.com/grafana/opentelemetry-go/internal/baggage"
+	"github.com/grafana/opentelemetry-go/propagation"
+	"github.com/grafana/opentelemetry-go/trace"
+	"github.com/grafana/opentelemetry-go/trace/noop"
 )
 
 var (
@@ -426,7 +426,7 @@ func (t *BridgeTracer) StartSpan(operationName string, opts ...ot.StartSpanOptio
 	)
 	if ot.SpanFromContext(checkCtx2) != nil {
 		t.warnOnce.Do(func() {
-			t.warningHandler("SDK should have deferred the context setup, see the documentation of go.opentelemetry.io/otel/bridge/opentracing/migration\n")
+			t.warningHandler("SDK should have deferred the context setup, see the documentation of github.com/grafana/opentelemetry-go/bridge/opentracing/migration\n")
 		})
 	}
 	if hadTrueErrorTag {

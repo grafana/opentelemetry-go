@@ -17,12 +17,12 @@ import (
 	"go.opencensus.io/tag"
 	octrace "go.opencensus.io/trace"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/bridge/opencensus"
-	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
-	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
-	"go.opentelemetry.io/otel/sdk/metric"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/bridge/opencensus"
+	"github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric"
+	"github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
+	sdktrace "github.com/grafana/opentelemetry-go/sdk/trace"
 )
 
 var (

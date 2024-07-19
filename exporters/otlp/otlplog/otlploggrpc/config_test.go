@@ -16,8 +16,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc/internal/retry"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploggrpc/internal/retry"
 )
 
 const (

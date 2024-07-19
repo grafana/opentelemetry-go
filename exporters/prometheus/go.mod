@@ -1,16 +1,16 @@
-module go.opentelemetry.io/otel/exporters/prometheus
+module github.com/grafana/opentelemetry-go/exporters/prometheus
 
 go 1.21
 
 require (
+	github.com/grafana/opentelemetry-go v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/metric v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/sdk v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/sdk/metric v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/trace v1.28.0-grafana.5-renamed
 	github.com/prometheus/client_golang v1.19.1
 	github.com/prometheus/client_model v0.6.1
 	github.com/stretchr/testify v1.9.0
-	go.opentelemetry.io/otel v1.28.0
-	go.opentelemetry.io/otel/metric v1.28.0
-	go.opentelemetry.io/otel/sdk v1.28.0
-	go.opentelemetry.io/otel/sdk/metric v1.28.0
-	go.opentelemetry.io/otel/trace v1.28.0
 	google.golang.org/protobuf v1.34.2
 )
 
@@ -30,12 +30,12 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace go.opentelemetry.io/otel => ../..
+replace github.com/grafana/opentelemetry-go => ../..
 
-replace go.opentelemetry.io/otel/sdk => ../../sdk
+replace github.com/grafana/opentelemetry-go/sdk => ../../sdk
 
-replace go.opentelemetry.io/otel/sdk/metric => ../../sdk/metric
+replace github.com/grafana/opentelemetry-go/sdk/metric => ../../sdk/metric
 
-replace go.opentelemetry.io/otel/trace => ../../trace
+replace github.com/grafana/opentelemetry-go/trace => ../../trace
 
-replace go.opentelemetry.io/otel/metric => ../../metric
+replace github.com/grafana/opentelemetry-go/metric => ../../metric

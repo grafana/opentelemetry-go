@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlpmetricgrpc // import "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
+package otlpmetricgrpc // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetricgrpc"
 
 import (
 	"context"
@@ -12,10 +12,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc/internal/oconf"
-	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc/internal/otest"
-	"go.opentelemetry.io/otel/sdk/metric"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetricgrpc/internal/oconf"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetricgrpc/internal/otest"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
 )
 
 func TestExporterClientConcurrentSafe(t *testing.T) {

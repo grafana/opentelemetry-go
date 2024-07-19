@@ -1,3 +1,3 @@
 # STDOUT Trace Exporter
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/exporters/stdout/stdouttrace)](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace)

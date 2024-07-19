@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	ottest "go.opentelemetry.io/otel/exporters/zipkin/internal/internaltest"
+	ottest "github.com/grafana/opentelemetry-go/exporters/zipkin/internal/internaltest"
 )
 
 func TestEnvOrWithCollectorEndpointOptionsFromEnv(t *testing.T) {

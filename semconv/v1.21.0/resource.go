@@ -3,9 +3,9 @@
 
 // Code generated from semantic convention specification. DO NOT EDIT.
 
-package semconv // import "go.opentelemetry.io/otel/semconv/v1.21.0"
+package semconv // import "github.com/grafana/opentelemetry-go/semconv/v1.21.0"
 
-import "go.opentelemetry.io/otel/attribute"
+import "github.com/grafana/opentelemetry-go/attribute"
 
 // The web browser in which the application represented by the resource is
 // running. The `browser.*` attributes MUST be used only for resources that

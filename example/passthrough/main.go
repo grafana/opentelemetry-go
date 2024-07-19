@@ -10,12 +10,12 @@ import (
 	"net/http"
 	"time"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/example/passthrough/handler"
-	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
-	"go.opentelemetry.io/otel/propagation"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	"go.opentelemetry.io/otel/trace"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/example/passthrough/handler"
+	"github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace"
+	"github.com/grafana/opentelemetry-go/propagation"
+	sdktrace "github.com/grafana/opentelemetry-go/sdk/trace"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 func main() {

@@ -1,3 +1,3 @@
 # Log Global
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/log/global)](https://pkg.go.dev/go.opentelemetry.io/otel/log/global)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/log/global)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/log/global)

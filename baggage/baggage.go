@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package baggage // import "go.opentelemetry.io/otel/baggage"
+package baggage // import "github.com/grafana/opentelemetry-go/baggage"
 
 import (
 	"errors"
@@ -10,7 +10,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"go.opentelemetry.io/otel/internal/baggage"
+	"github.com/grafana/opentelemetry-go/internal/baggage"
 )
 
 const (

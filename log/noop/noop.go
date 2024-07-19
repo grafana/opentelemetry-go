@@ -11,14 +11,14 @@
 // [OpenTelemetry Logs Bridge API]. Doing so will mean the implementation
 // defaults to no operation for methods it does not implement.
 //
-// [OpenTelemetry Logs Bridge API]: https://pkg.go.dev/go.opentelemetry.io/otel/log
-package noop // import "go.opentelemetry.io/otel/log/noop"
+// [OpenTelemetry Logs Bridge API]: https://pkg.go.dev/github.com/grafana/opentelemetry-go/log
+package noop // import "github.com/grafana/opentelemetry-go/log/noop"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/log/embedded"
+	"github.com/grafana/opentelemetry-go/log"
+	"github.com/grafana/opentelemetry-go/log/embedded"
 )
 
 var (

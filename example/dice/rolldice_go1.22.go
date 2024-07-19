@@ -13,8 +13,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/metric"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/metric"
 )
 
 func rolldice(w http.ResponseWriter, r *http.Request) {

@@ -6,4 +6,4 @@
 /*
 Package log provides the OpenTelemetry Logs SDK.
 */
-package log // import "go.opentelemetry.io/otel/sdk/log"
+package log // import "github.com/grafana/opentelemetry-go/sdk/log"

@@ -3,4 +3,4 @@
 
 // Package otlploggrpc provides an OTLP log exporter. The exporter uses gRPC to
 // transport OTLP protobuf payloads.
-package otlploggrpc // import "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc"
+package otlploggrpc // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploggrpc"

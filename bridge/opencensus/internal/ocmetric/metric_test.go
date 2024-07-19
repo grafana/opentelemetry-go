@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internal // import "go.opentelemetry.io/otel/bridge/opencensus/opencensusmetric/internal"
+package internal // import "github.com/grafana/opentelemetry-go/bridge/opencensus/opencensusmetric/internal"
 
 import (
 	"errors"
@@ -17,9 +17,9 @@ import (
 	ocmetricdata "go.opencensus.io/metric/metricdata"
 	octrace "go.opencensus.io/trace"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata/metricdatatest"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata/metricdatatest"
 )
 
 func TestConvertMetrics(t *testing.T) {

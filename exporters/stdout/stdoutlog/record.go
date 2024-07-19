@@ -1,18 +1,18 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package stdoutlog // import "go.opentelemetry.io/otel/exporters/stdout/stdoutlog"
+package stdoutlog // import "github.com/grafana/opentelemetry-go/exporters/stdout/stdoutlog"
 
 import (
 	"encoding/json"
 	"errors"
 	"time"
 
-	"go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	sdklog "go.opentelemetry.io/otel/sdk/log"
-	"go.opentelemetry.io/otel/sdk/resource"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/log"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	sdklog "github.com/grafana/opentelemetry-go/sdk/log"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 func newValue(v log.Value) value {

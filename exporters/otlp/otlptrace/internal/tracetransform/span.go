@@ -1,14 +1,15 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package tracetransform // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/internal/tracetransform"
+package tracetransform // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/internal/tracetransform"
 
 import (
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	tracesdk "go.opentelemetry.io/otel/sdk/trace"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/codes"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	tracesdk "github.com/grafana/opentelemetry-go/sdk/trace"
+	"github.com/grafana/opentelemetry-go/trace"
+
 	tracepb "go.opentelemetry.io/proto/otlp/trace/v1"
 )
 

@@ -3,9 +3,9 @@
 
 // Code generated from semantic convention specification. DO NOT EDIT.
 
-package semconv // import "go.opentelemetry.io/otel/semconv/v1.4.0"
+package semconv // import "github.com/grafana/opentelemetry-go/semconv/v1.4.0"
 
-import "go.opentelemetry.io/otel/attribute"
+import "github.com/grafana/opentelemetry-go/attribute"
 
 // This document defines the attributes used to perform database client calls.
 const (

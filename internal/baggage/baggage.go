@@ -7,10 +7,10 @@ baggage in Go context. This package exists because the OpenTracing bridge to
 OpenTelemetry needs to synchronize state whenever baggage for a context is
 modified and that context contains an OpenTracing span. If it were not for
 this need this package would not need to exist and the
-`go.opentelemetry.io/otel/baggage` package would be the singular place where
+`github.com/grafana/opentelemetry-go/baggage` package would be the singular place where
 W3C baggage is handled.
 */
-package baggage // import "go.opentelemetry.io/otel/internal/baggage"
+package baggage // import "github.com/grafana/opentelemetry-go/internal/baggage"
 
 // List is the collection of baggage members. The W3C allows for duplicates,
 // but OpenTelemetry does not, therefore, this is represented as a map.

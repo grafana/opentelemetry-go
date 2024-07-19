@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package opentracing // import "go.opentelemetry.io/otel/bridge/opentracing"
+package opentracing // import "github.com/grafana/opentelemetry-go/bridge/opentracing"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/bridge/opentracing/migration"
-	"go.opentelemetry.io/otel/trace"
-	"go.opentelemetry.io/otel/trace/embedded"
+	"github.com/grafana/opentelemetry-go/bridge/opentracing/migration"
+	"github.com/grafana/opentelemetry-go/trace"
+	"github.com/grafana/opentelemetry-go/trace/embedded"
 )
 
 // WrapperTracerProvider is an OpenTelemetry TracerProvider that wraps an

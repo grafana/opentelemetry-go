@@ -105,7 +105,7 @@ func {{name}}(val ...bool) attribute.KeyValue {
 
 package semconv  // import [[IMPORTPATH]]
 
-import "go.opentelemetry.io/otel/attribute"
+import "github.com/grafana/opentelemetry-go/attribute"
 
 {% for semconv in semconvs -%}
 {%- if semconvs[semconv].attributes | rejectattr("ref") | rejectattr("deprecated") | selectattr("is_local") | sort(attribute=fqn) | length > 0 -%}

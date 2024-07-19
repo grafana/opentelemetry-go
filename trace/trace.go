@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package trace // import "go.opentelemetry.io/otel/trace"
+package trace // import "github.com/grafana/opentelemetry-go/trace"
 
 import (
 	"bytes"
@@ -9,9 +9,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace/embedded"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/codes"
+	"github.com/grafana/opentelemetry-go/trace/embedded"
 )
 
 const (
@@ -530,7 +530,7 @@ type Tracer interface {
 //
 // Commonly, instrumentation code will accept a TracerProvider implementation
 // at runtime from its users or it can simply use the globally registered one
-// (see https://pkg.go.dev/go.opentelemetry.io/otel#GetTracerProvider).
+// (see https://pkg.go.dev/github.com/grafana/opentelemetry-go#GetTracerProvider).
 //
 // Warning: Methods may be added to this interface in minor releases. See
 // package documentation on API implementation for information on how to set

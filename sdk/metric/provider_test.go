@@ -14,10 +14,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel"
-	api "go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/noop"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	otel "github.com/grafana/opentelemetry-go"
+	api "github.com/grafana/opentelemetry-go/metric"
+	"github.com/grafana/opentelemetry-go/metric/noop"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
 )
 
 func TestMeterConcurrentSafe(t *testing.T) {

@@ -1,3 +1,3 @@
 # OTLP Metric HTTP Exporter
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp)](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp)

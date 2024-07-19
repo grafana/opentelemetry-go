@@ -24,7 +24,7 @@ operation being performed as part of a traced workflow. In its simplest form:
 A Tracer is unique to the instrumentation and is used to create Spans.
 Instrumentation should be designed to accept a TracerProvider from which it
 can create its own unique Tracer. Alternatively, the registered global
-TracerProvider from the go.opentelemetry.io/otel package can be used as
+TracerProvider from the github.com/grafana/opentelemetry-go package can be used as
 a default.
 
 	const (
@@ -70,14 +70,14 @@ make:
   - Default to another implementation
 
 All interfaces in this API embed a corresponding interface from
-[go.opentelemetry.io/otel/trace/embedded]. If an author wants the default
+[github.com/grafana/opentelemetry-go/trace/embedded]. If an author wants the default
 behavior of their implementations to be a compilation failure, signaling to
 their users they need to update to the latest version of that implementation,
 they need to embed the corresponding interface from
-[go.opentelemetry.io/otel/trace/embedded] in their implementation. For
+[github.com/grafana/opentelemetry-go/trace/embedded] in their implementation. For
 example,
 
-	import "go.opentelemetry.io/otel/trace/embedded"
+	import "github.com/grafana/opentelemetry-go/trace/embedded"
 
 	type TracerProvider struct {
 		embedded.TracerProvider
@@ -87,7 +87,7 @@ example,
 If an author wants the default behavior of their implementations to panic, they
 can embed the API interface directly.
 
-	import "go.opentelemetry.io/otel/trace"
+	import "github.com/grafana/opentelemetry-go/trace"
 
 	type TracerProvider struct {
 		trace.TracerProvider
@@ -96,15 +96,15 @@ can embed the API interface directly.
 
 This option is not recommended. It will lead to publishing packages that
 contain runtime panics when users update to newer versions of
-[go.opentelemetry.io/otel/trace], which may be done with a trasitive
+[github.com/grafana/opentelemetry-go/trace], which may be done with a trasitive
 dependency.
 
 Finally, an author can embed another implementation in theirs. The embedded
 implementation will be used for methods not defined by the author. For example,
 an author who wants to default to silently dropping the call can use
-[go.opentelemetry.io/otel/trace/noop]:
+[github.com/grafana/opentelemetry-go/trace/noop]:
 
-	import "go.opentelemetry.io/otel/trace/noop"
+	import "github.com/grafana/opentelemetry-go/trace/noop"
 
 	type TracerProvider struct {
 		noop.TracerProvider
@@ -112,8 +112,8 @@ an author who wants to default to silently dropping the call can use
 	}
 
 It is strongly recommended that authors only embed
-[go.opentelemetry.io/otel/trace/noop] if they choose this default behavior.
+[github.com/grafana/opentelemetry-go/trace/noop] if they choose this default behavior.
 That implementation is the only one OpenTelemetry authors can guarantee will
 fully implement all the API interfaces when a user updates their API.
 */
-package trace // import "go.opentelemetry.io/otel/trace"
+package trace // import "github.com/grafana/opentelemetry-go/trace"

@@ -4,7 +4,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlpconfig // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp/internal/otlpconfig"
+package otlpconfig // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp/internal/otlpconfig"
 
 import (
 	"crypto/tls"
@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp/internal/envconfig"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp/internal/envconfig"
 )
 
 // DefaultEnvOptionsReader is the default environments reader.

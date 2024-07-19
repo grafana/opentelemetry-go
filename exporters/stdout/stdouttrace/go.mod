@@ -1,17 +1,17 @@
-module go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+module github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace
 
 go 1.21
 
 replace (
-	go.opentelemetry.io/otel => ../../..
-	go.opentelemetry.io/otel/sdk => ../../../sdk
+	github.com/grafana/opentelemetry-go => ../../..
+	github.com/grafana/opentelemetry-go/sdk => ../../../sdk
 )
 
 require (
+	github.com/grafana/opentelemetry-go v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/sdk v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/trace v1.28.0-grafana.5-renamed
 	github.com/stretchr/testify v1.9.0
-	go.opentelemetry.io/otel v1.28.0
-	go.opentelemetry.io/otel/sdk v1.28.0
-	go.opentelemetry.io/otel/trace v1.28.0
 )
 
 require (
@@ -19,12 +19,12 @@ require (
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/grafana/opentelemetry-go/metric v1.28.0-grafana.5-renamed // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	go.opentelemetry.io/otel/metric v1.28.0 // indirect
 	golang.org/x/sys v0.21.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace go.opentelemetry.io/otel/trace => ../../../trace
+replace github.com/grafana/opentelemetry-go/trace => ../../../trace
 
-replace go.opentelemetry.io/otel/metric => ../../../metric
+replace github.com/grafana/opentelemetry-go/metric => ../../../metric

@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlptracegrpc // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+package otlptracegrpc // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc"
 
 import (
 	"context"
@@ -15,11 +15,12 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal/otlpconfig"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal/retry"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal/otlpconfig"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal/retry"
+
 	coltracepb "go.opentelemetry.io/proto/otlp/collector/trace/v1"
 	tracepb "go.opentelemetry.io/proto/otlp/trace/v1"
 )

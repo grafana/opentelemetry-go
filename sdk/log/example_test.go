@@ -7,8 +7,8 @@ import (
 	"context"
 	"strings"
 
-	"go.opentelemetry.io/otel/log"
-	logsdk "go.opentelemetry.io/otel/sdk/log"
+	"github.com/grafana/opentelemetry-go/log"
+	logsdk "github.com/grafana/opentelemetry-go/sdk/log"
 )
 
 // Use a processor that filters out records based on the provided context.

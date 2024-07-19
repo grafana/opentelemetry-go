@@ -9,9 +9,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/sdk/metric/internal/exemplar"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/sdk/metric/internal/exemplar"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
 )
 
 func TestCollectExemplars(t *testing.T) {

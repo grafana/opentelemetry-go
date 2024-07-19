@@ -48,20 +48,20 @@ To create a new PR, fork the project in GitHub and clone the upstream
 repo:
 
 ```sh
-go get -d go.opentelemetry.io/otel
+go get -d github.com/grafana/opentelemetry-go
 ```
 
 (This may print some warning about "build constraints exclude all Go
 files", just ignore it.)
 
-This will put the project in `${GOPATH}/src/go.opentelemetry.io/otel`. You
+This will put the project in `${GOPATH}/src/github.com/grafana/opentelemetry-go`. You
 can alternatively use `git` directly with:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-go
 ```
 
-(Note that `git clone` is *not* using the `go.opentelemetry.io/otel` name -
+(Note that `git clone` is *not* using the `github.com/grafana/opentelemetry-go` name -
 that name is a kind of a redirector to GitHub that `go get` can
 understand, but `git` does not.)
 
@@ -198,7 +198,7 @@ You can install and run a "local Go Doc site" in the following way:
   pkgsite
   ```
 
-[`go.opentelemetry.io/otel/metric`](https://pkg.go.dev/go.opentelemetry.io/otel/metric)
+[`github.com/grafana/opentelemetry-go/metric`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/metric)
 is an example of a very well-documented package.
 
 ### README files
@@ -261,8 +261,8 @@ how the user can extend the configuration.
 It is important that internal `config` are not shared across package boundaries.
 Meaning a `config` from one package should not be directly used by another. The
 one exception is the API packages.  The configs from the base API, eg.
-`go.opentelemetry.io/otel/trace.TracerConfig` and
-`go.opentelemetry.io/otel/metric.InstrumentConfig`, are intended to be consumed
+`github.com/grafana/opentelemetry-go/trace.TracerConfig` and
+`github.com/grafana/opentelemetry-go/metric.InstrumentConfig`, are intended to be consumed
 by the SDK therefore it is expected that these are exported.
 
 When a config is exported we want to maintain forward and backward
@@ -589,16 +589,16 @@ and if the internal package API has changed it will fail to upgrade[^3].
 
 There are two known exceptions to this rule:
 
-- `go.opentelemetry.io/otel/internal/global`
+- `github.com/grafana/opentelemetry-go/internal/global`
   - This package manages global state for all of opentelemetry-go. It needs to
   be a single package in order to ensure the uniqueness of the global state.
-- `go.opentelemetry.io/otel/internal/baggage`
+- `github.com/grafana/opentelemetry-go/internal/baggage`
   - This package provides values in a `context.Context` that need to be
-  recognized by `go.opentelemetry.io/otel/baggage` and
-  `go.opentelemetry.io/otel/bridge/opentracing` but remain private.
+  recognized by `github.com/grafana/opentelemetry-go/baggage` and
+  `github.com/grafana/opentelemetry-go/bridge/opentracing` but remain private.
 
 If you have duplicate code in multiple modules, make that code into a Go
-template stored in `go.opentelemetry.io/otel/internal/shared` and use [gotmpl]
+template stored in `github.com/grafana/opentelemetry-go/internal/shared` and use [gotmpl]
 to render the templates in the desired locations. See [#4404] for an example of
 this.
 

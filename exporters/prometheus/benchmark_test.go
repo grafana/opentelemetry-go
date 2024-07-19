@@ -11,7 +11,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/sdk/metric"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
 )
 
 func benchmarkCollect(b *testing.B, n int) {

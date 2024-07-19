@@ -4,7 +4,7 @@
 //go:build tools
 // +build tools
 
-package tools // import "go.opentelemetry.io/otel/internal/tools"
+package tools // import "github.com/grafana/opentelemetry-go/internal/tools"
 
 import (
 	_ "github.com/client9/misspell/cmd/misspell"

@@ -4,7 +4,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internaltest // import "go.opentelemetry.io/otel/exporters/zipkin/internal/internaltest"
+package internaltest // import "github.com/grafana/opentelemetry-go/exporters/zipkin/internal/internaltest"
 
 import (
 	"context"
@@ -13,10 +13,10 @@ import (
 	"testing"
 	"time"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/exporters/zipkin/internal/matchers"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/codes"
+	"github.com/grafana/opentelemetry-go/exporters/zipkin/internal/matchers"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 // Harness is a testing harness used to test implementations of the

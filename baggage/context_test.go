@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/internal/baggage"
+	"github.com/grafana/opentelemetry-go/internal/baggage"
 )
 
 func TestContext(t *testing.T) {

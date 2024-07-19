@@ -2,4 +2,4 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // Package zipkin contains an OpenTelemetry tracing exporter for Zipkin.
-package zipkin // import "go.opentelemetry.io/otel/exporters/zipkin"
+package zipkin // import "github.com/grafana/opentelemetry-go/exporters/zipkin"

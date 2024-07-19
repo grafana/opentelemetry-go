@@ -4,7 +4,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otest // import "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp/internal/otest"
+package otest // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp/internal/otest"
 
 import (
 	"context"
@@ -17,8 +17,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 
-	"go.opentelemetry.io/otel"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	otel "github.com/grafana/opentelemetry-go"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
+
 	collpb "go.opentelemetry.io/proto/otlp/collector/metrics/v1"
 	cpb "go.opentelemetry.io/proto/otlp/common/v1"
 	mpb "go.opentelemetry.io/proto/otlp/metrics/v1"

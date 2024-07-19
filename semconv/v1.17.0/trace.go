@@ -3,9 +3,9 @@
 
 // Code generated from semantic convention specification. DO NOT EDIT.
 
-package semconv // import "go.opentelemetry.io/otel/semconv/v1.17.0"
+package semconv // import "github.com/grafana/opentelemetry-go/semconv/v1.17.0"
 
-import "go.opentelemetry.io/otel/attribute"
+import "github.com/grafana/opentelemetry-go/attribute"
 
 // The shared attributes used to report a single exception associated with a
 // span or log.

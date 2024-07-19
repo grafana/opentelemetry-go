@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package stdoutmetric // import "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
+package stdoutmetric // import "github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric"
 
 import (
 	"context"
@@ -10,9 +10,9 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"go.opentelemetry.io/otel/internal/global"
-	"go.opentelemetry.io/otel/sdk/metric"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/internal/global"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
 )
 
 // exporter is an OpenTelemetry metric exporter.

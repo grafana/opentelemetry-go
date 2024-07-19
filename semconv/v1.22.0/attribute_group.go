@@ -3,9 +3,9 @@
 
 // Code generated from semantic convention specification. DO NOT EDIT.
 
-package semconv // import "go.opentelemetry.io/otel/semconv/v1.22.0"
+package semconv // import "github.com/grafana/opentelemetry-go/semconv/v1.22.0"
 
-import "go.opentelemetry.io/otel/attribute"
+import "github.com/grafana/opentelemetry-go/attribute"
 
 // These attributes may be used to describe the client in a connection-based
 // network interaction where there is one side that initiates the connection

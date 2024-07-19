@@ -9,17 +9,17 @@ import (
 	"log"
 	"regexp"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	"go.opentelemetry.io/otel/sdk/metric"
-	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
 )
 
 // To enable metrics in your application using the SDK,
 // you'll need to have an initialized [MeterProvider]
-// that will let you create a [go.opentelemetry.io/otel/metric.Meter].
+// that will let you create a [github.com/grafana/opentelemetry-go/metric.Meter].
 //
 // Here's how you might initialize a metrics provider.
 func Example() {
@@ -34,7 +34,7 @@ func Example() {
 	}
 
 	// This reader is used as a stand-in for a reader that will actually export
-	// data. See https://pkg.go.dev/go.opentelemetry.io/otel/exporters for
+	// data. See https://pkg.go.dev/github.com/grafana/opentelemetry-go/exporters for
 	// exporters that can be used as or with readers.
 	reader := metric.NewManualReader()
 

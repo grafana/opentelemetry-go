@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package global // import "go.opentelemetry.io/otel/internal/global"
+package global // import "github.com/grafana/opentelemetry-go/internal/global"
 
 import (
 	"context"
@@ -12,8 +12,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/noop"
+	"github.com/grafana/opentelemetry-go/metric"
+	"github.com/grafana/opentelemetry-go/metric/noop"
 )
 
 func TestMeterProviderConcurrentSafe(t *testing.T) {
@@ -190,7 +190,7 @@ func TestMeterProviderDelegatesCalls(t *testing.T) {
 
 	assert.Equal(t, 0, mp.count)
 
-	meter := globalMeterProvider.Meter("go.opentelemetry.io/otel/metric/internal/global/meter_test")
+	meter := globalMeterProvider.Meter("github.com/grafana/opentelemetry-go/metric/internal/global/meter_test")
 
 	ctr, actr := testSetupAllInstrumentTypes(t, meter)
 
@@ -237,7 +237,7 @@ func TestMeterDelegatesCalls(t *testing.T) {
 
 	assert.Equal(t, 0, mp.count)
 
-	m := globalMeterProvider.Meter("go.opentelemetry.io/otel/metric/internal/global/meter_test")
+	m := globalMeterProvider.Meter("github.com/grafana/opentelemetry-go/metric/internal/global/meter_test")
 
 	globalMeterProvider.setDelegate(mp)
 
@@ -282,7 +282,7 @@ func TestMeterDefersDelegations(t *testing.T) {
 	// globalMeterProvider := otel.GetMeterProvider
 	globalMeterProvider := &meterProvider{}
 
-	m := globalMeterProvider.Meter("go.opentelemetry.io/otel/metric/internal/global/meter_test")
+	m := globalMeterProvider.Meter("github.com/grafana/opentelemetry-go/metric/internal/global/meter_test")
 
 	ctr, actr := testSetupAllInstrumentTypes(t, m)
 
@@ -323,7 +323,7 @@ func TestRegistrationDelegation(t *testing.T) {
 	// globalMeterProvider := otel.GetMeterProvider
 	globalMeterProvider := &meterProvider{}
 
-	m := globalMeterProvider.Meter("go.opentelemetry.io/otel/metric/internal/global/meter_test")
+	m := globalMeterProvider.Meter("github.com/grafana/opentelemetry-go/metric/internal/global/meter_test")
 	require.IsType(t, &meter{}, m)
 	mImpl := m.(*meter)
 

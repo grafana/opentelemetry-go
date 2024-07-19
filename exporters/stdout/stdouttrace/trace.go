@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package stdouttrace // import "go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+package stdouttrace // import "github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace"
 
 import (
 	"context"
@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"go.opentelemetry.io/otel/sdk/trace"
-	"go.opentelemetry.io/otel/sdk/trace/tracetest"
+	"github.com/grafana/opentelemetry-go/sdk/trace"
+	"github.com/grafana/opentelemetry-go/sdk/trace/tracetest"
 )
 
 var zeroTime time.Time

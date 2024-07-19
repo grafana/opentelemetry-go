@@ -14,7 +14,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/sdk/log"
+	"github.com/grafana/opentelemetry-go/sdk/log"
+
 	logpb "go.opentelemetry.io/proto/otlp/logs/v1"
 )
 

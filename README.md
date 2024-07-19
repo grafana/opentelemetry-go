@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/open-telemetry/opentelemetry-go/workflows/ci/badge.svg)](https://github.com/open-telemetry/opentelemetry-go/actions?query=workflow%3Aci+branch%3Amain)
 [![codecov.io](https://codecov.io/gh/open-telemetry/opentelemetry-go/coverage.svg?branch=main)](https://app.codecov.io/gh/open-telemetry/opentelemetry-go?branch=main)
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel)](https://pkg.go.dev/go.opentelemetry.io/otel)
-[![Go Report Card](https://goreportcard.com/badge/go.opentelemetry.io/otel)](https://goreportcard.com/report/go.opentelemetry.io/otel)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go)](https://pkg.go.dev/github.com/grafana/opentelemetry-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/grafana/opentelemetry-go)](https://goreportcard.com/report/github.com/grafana/opentelemetry-go)
 [![Slack](https://img.shields.io/badge/slack-@cncf/otel--go-brightgreen.svg?logo=slack)](https://cloud-native.slack.com/archives/C01NPAXACKT)
 
 OpenTelemetry-Go is the [Go](https://golang.org/) implementation of [OpenTelemetry](https://opentelemetry.io/).
@@ -86,7 +86,7 @@ libraries](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/
 If you need to extend the telemetry an instrumentation library provides or want
 to build your own instrumentation for your application directly you will need
 to use the
-[Go otel](https://pkg.go.dev/go.opentelemetry.io/otel)
+[Go otel](https://pkg.go.dev/github.com/grafana/opentelemetry-go)
 package. The included [examples](./example/) are a good way to see some
 practical uses of this process.
 

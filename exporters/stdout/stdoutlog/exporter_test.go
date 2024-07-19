@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package stdoutlog // import "go.opentelemetry.io/otel/exporters/stdout/stdoutout"
+package stdoutlog // import "github.com/grafana/opentelemetry-go/exporters/stdout/stdoutout"
 
 import (
 	"bytes"
@@ -11,17 +11,17 @@ import (
 	"testing"
 	"time"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	"go.opentelemetry.io/otel/sdk/log/logtest"
-	"go.opentelemetry.io/otel/sdk/resource"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/sdk/log/logtest"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/log"
-	sdklog "go.opentelemetry.io/otel/sdk/log"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/log"
+	sdklog "github.com/grafana/opentelemetry-go/sdk/log"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 func TestExporter(t *testing.T) {

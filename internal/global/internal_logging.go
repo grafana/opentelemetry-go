@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package global // import "go.opentelemetry.io/otel/internal/global"
+package global // import "github.com/grafana/opentelemetry-go/internal/global"
 
 import (
 	"log"
@@ -13,7 +13,7 @@ import (
 )
 
 // globalLogger holds a reference to the [logr.Logger] used within
-// go.opentelemetry.io/otel.
+// github.com/grafana/opentelemetry-go.
 //
 // The default logger uses stdr which is backed by the standard `log.Logger`
 // interface. This logger will only show messages at the Error Level.

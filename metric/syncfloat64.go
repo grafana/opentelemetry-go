@@ -1,12 +1,12 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package metric // import "go.opentelemetry.io/otel/metric"
+package metric // import "github.com/grafana/opentelemetry-go/metric"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/metric/embedded"
+	"github.com/grafana/opentelemetry-go/metric/embedded"
 )
 
 // Float64Counter is an instrument that records increasing float64 values.

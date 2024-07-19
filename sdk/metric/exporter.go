@@ -1,13 +1,13 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package metric // import "go.opentelemetry.io/otel/sdk/metric"
+package metric // import "github.com/grafana/opentelemetry-go/sdk/metric"
 
 import (
 	"context"
 	"fmt"
 
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
 )
 
 // ErrExporterShutdown is returned if Export or Shutdown are called after an

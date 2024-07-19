@@ -4,13 +4,13 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internaltest // import "go.opentelemetry.io/otel/exporters/zipkin/internal/internaltest"
+package internaltest // import "github.com/grafana/opentelemetry-go/exporters/zipkin/internal/internaltest"
 
 import (
 	"sync"
 	"testing"
 
-	"go.opentelemetry.io/otel/propagation"
+	"github.com/grafana/opentelemetry-go/propagation"
 )
 
 // TextMapCarrier is a storage medium for a TextMapPropagator used in testing.

@@ -3,13 +3,13 @@
 
 // Package metricdatatest provides testing functionality for use with the
 // metricdata package.
-package metricdatatest // import "go.opentelemetry.io/otel/sdk/metric/metricdata/metricdatatest"
+package metricdatatest // import "github.com/grafana/opentelemetry-go/sdk/metric/metricdata/metricdatatest"
 
 import (
 	"fmt"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
 )
 
 // Datatypes are the concrete data-types the metricdata package provides.

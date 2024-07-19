@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package noop // import "go.opentelemetry.io/otel/metric/noop"
+package noop // import "github.com/grafana/opentelemetry-go/metric/noop"
 
 import (
 	"reflect"
@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/metric"
+	"github.com/grafana/opentelemetry-go/metric"
 )
 
 func TestImplementationNoPanics(t *testing.T) {

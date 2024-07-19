@@ -12,8 +12,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/log"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
 )
 
 func TestAllocationLimits(t *testing.T) {

@@ -1,3 +1,3 @@
 # STDOUT Metric Exporter
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric)

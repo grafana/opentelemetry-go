@@ -1,21 +1,21 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package trace // import "go.opentelemetry.io/otel/trace"
+package trace // import "github.com/grafana/opentelemetry-go/trace"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace/embedded"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/codes"
+	"github.com/grafana/opentelemetry-go/trace/embedded"
 )
 
 // NewNoopTracerProvider returns an implementation of TracerProvider that
 // performs no operations. The Tracer and Spans created from the returned
 // TracerProvider also perform no operations.
 //
-// Deprecated: Use [go.opentelemetry.io/otel/trace/noop.NewTracerProvider]
+// Deprecated: Use [github.com/grafana/opentelemetry-go/trace/noop.NewTracerProvider]
 // instead.
 func NewNoopTracerProvider() TracerProvider {
 	return noopTracerProvider{}

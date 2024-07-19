@@ -4,7 +4,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internaltest // import "go.opentelemetry.io/otel/exporters/zipkin/internal/internaltest"
+package internaltest // import "github.com/grafana/opentelemetry-go/exporters/zipkin/internal/internaltest"
 
 import (
 	"os"

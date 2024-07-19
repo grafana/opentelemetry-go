@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"log"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/sdk/resource"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
 )
 
 func ExampleNew() {

@@ -2,7 +2,7 @@
 
 ## Abstract
 
-`go.opentelemetry.io/otel/sdk/log` provides Logs SDK compliant with the
+`github.com/grafana/opentelemetry-go/sdk/log` provides Logs SDK compliant with the
 [specification](https://opentelemetry.io/docs/specs/otel/logs/sdk/).
 
 The main and recommended use case is to configure the SDK to use an OTLP
@@ -14,13 +14,13 @@ The prototype was created in
 
 ## Modules structure
 
-The SDK is published as a single `go.opentelemetry.io/otel/sdk/log` Go module.
+The SDK is published as a single `github.com/grafana/opentelemetry-go/sdk/log` Go module.
 
 The exporters are going to be published as following Go modules:
 
-- `go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc`
-- `go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`
-- `go.opentelemetry.io/otel/exporters/stdout/stdoutlog`
+- `github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploggrpc`
+- `github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploghttp`
+- `github.com/grafana/opentelemetry-go/exporters/stdout/stdoutlog`
 
 ## LoggerProvider
 
@@ -89,7 +89,7 @@ describes how the SDK can be extended in a backwards-compatible way.
 The [ReadWriteLogRecord](https://opentelemetry.io/docs/specs/otel/logs/sdk/#readwritelogrecord)
 is defined as `Record` struct in [record.go](record.go).
 
-The `Record` is designed similarly to [`log.Record`](https://pkg.go.dev/go.opentelemetry.io/otel/log#Record)
+The `Record` is designed similarly to [`log.Record`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/log#Record)
 in order to reduce the number of heap allocations when processing attributes.
 
 The SDK does not have have an additional definition of
@@ -120,10 +120,10 @@ and makes the design more aligned with the specification.
 
 ### Embed log.Record
 
-Because [`Record`](#record) and [`log.Record`](https://pkg.go.dev/go.opentelemetry.io/otel/log#Record)
+Because [`Record`](#record) and [`log.Record`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/log#Record)
 are very similar, there was a proposal to embed `log.Record` in `Record` definition.
 
-[`log.Record`](https://pkg.go.dev/go.opentelemetry.io/otel/log#Record)
+[`log.Record`](https://pkg.go.dev/github.com/grafana/opentelemetry-go/log#Record)
 supports only adding attributes.
 In the SDK, we also need to be able to modify the attributes (e.g. removal)
 provided via API.

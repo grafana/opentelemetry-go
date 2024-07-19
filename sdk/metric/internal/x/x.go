@@ -5,7 +5,7 @@
 //
 // This package should only be used for features defined in the specification.
 // It should not be used for experiments or new project ideas.
-package x // import "go.opentelemetry.io/otel/sdk/metric/internal/x"
+package x // import "github.com/grafana/opentelemetry-go/sdk/metric/internal/x"
 
 import (
 	"os"

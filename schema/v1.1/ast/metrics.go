@@ -1,12 +1,12 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package ast // import "go.opentelemetry.io/otel/schema/v1.1/ast"
+package ast // import "github.com/grafana/opentelemetry-go/schema/v1.1/ast"
 
 import (
-	ast10 "go.opentelemetry.io/otel/schema/v1.0/ast"
-	types10 "go.opentelemetry.io/otel/schema/v1.0/types"
-	types11 "go.opentelemetry.io/otel/schema/v1.1/types"
+	ast10 "github.com/grafana/opentelemetry-go/schema/v1.0/ast"
+	types10 "github.com/grafana/opentelemetry-go/schema/v1.0/types"
+	types11 "github.com/grafana/opentelemetry-go/schema/v1.1/types"
 )
 
 // Metrics corresponds to a section representing a list of changes that happened

@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package handler // import "go.opentelemetry.io/otel/example/passthrough/handler"
+package handler // import "github.com/grafana/opentelemetry-go/example/passthrough/handler"
 
 import (
 	"context"
@@ -9,9 +9,9 @@ import (
 	"net/http"
 	"time"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
-	"go.opentelemetry.io/otel/trace"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/propagation"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 // Handler is a minimal implementation of the handler and client from

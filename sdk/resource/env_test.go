@@ -11,9 +11,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/attribute"
-	ottest "go.opentelemetry.io/otel/sdk/internal/internaltest"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	"github.com/grafana/opentelemetry-go/attribute"
+	ottest "github.com/grafana/opentelemetry-go/sdk/internal/internaltest"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
 )
 
 func TestDetectOnePair(t *testing.T) {

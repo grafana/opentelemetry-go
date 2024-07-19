@@ -12,7 +12,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/log"
+	"github.com/grafana/opentelemetry-go/log"
 )
 
 func verifyRing(t *testing.T, r *ring, N int, sum int) {

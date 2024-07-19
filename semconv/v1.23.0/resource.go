@@ -3,9 +3,9 @@
 
 // Code generated from semantic convention specification. DO NOT EDIT.
 
-package semconv // import "go.opentelemetry.io/otel/semconv/v1.23.0"
+package semconv // import "github.com/grafana/opentelemetry-go/semconv/v1.23.0"
 
-import "go.opentelemetry.io/otel/attribute"
+import "github.com/grafana/opentelemetry-go/attribute"
 
 // The Android platform on which the Android application is running.
 const (

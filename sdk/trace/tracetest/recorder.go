@@ -1,13 +1,13 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package tracetest // import "go.opentelemetry.io/otel/sdk/trace/tracetest"
+package tracetest // import "github.com/grafana/opentelemetry-go/sdk/trace/tracetest"
 
 import (
 	"context"
 	"sync"
 
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	sdktrace "github.com/grafana/opentelemetry-go/sdk/trace"
 )
 
 // SpanRecorder records started and ended spans.

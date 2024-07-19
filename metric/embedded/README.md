@@ -1,3 +1,3 @@
 # Metric Embedded
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/metric/embedded)](https://pkg.go.dev/go.opentelemetry.io/otel/metric/embedded)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/metric/embedded)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/metric/embedded)

@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	ottest "go.opentelemetry.io/otel/sdk/internal/internaltest"
+	ottest "github.com/grafana/opentelemetry-go/sdk/internal/internaltest"
 )
 
 func TestEnvParse(t *testing.T) {

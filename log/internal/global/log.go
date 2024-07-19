@@ -1,15 +1,15 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package global // import "go.opentelemetry.io/otel/log/internal/global"
+package global // import "github.com/grafana/opentelemetry-go/log/internal/global"
 
 import (
 	"context"
 	"sync"
 	"sync/atomic"
 
-	"go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/log/embedded"
+	"github.com/grafana/opentelemetry-go/log"
+	"github.com/grafana/opentelemetry-go/log/embedded"
 )
 
 // instLib defines the instrumentation library a logger is created for.

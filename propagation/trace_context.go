@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package propagation // import "go.opentelemetry.io/otel/propagation"
+package propagation // import "github.com/grafana/opentelemetry-go/propagation"
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"strings"
 
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 const (

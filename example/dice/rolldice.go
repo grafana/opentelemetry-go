@@ -4,9 +4,9 @@
 package main
 
 import (
+	"github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/metric"
 	"go.opentelemetry.io/contrib/bridges/otelslog"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/metric"
 )
 
 const name = "rolldice"

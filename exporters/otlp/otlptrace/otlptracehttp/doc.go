@@ -60,4 +60,4 @@ The configuration can be overridden by [WithTLSClientConfig] option.
 
 [W3C Baggage HTTP Header Content Format]: https://www.w3.org/TR/baggage/#header-content
 */
-package otlptracehttp // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+package otlptracehttp // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp"

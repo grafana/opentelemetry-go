@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internal // import "go.opentelemetry.io/otel/semconv/internal/v2"
+package internal // import "github.com/grafana/opentelemetry-go/semconv/internal/v2"
 
 import (
 	"net"
 	"strconv"
 	"strings"
 
-	"go.opentelemetry.io/otel/attribute"
+	"github.com/grafana/opentelemetry-go/attribute"
 )
 
 // NetConv are the network semantic convention attributes defined for a version

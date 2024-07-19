@@ -1,4 +1,4 @@
-module go.opentelemetry.io/otel/schema
+module github.com/grafana/opentelemetry-go/schema
 
 go 1.21
 

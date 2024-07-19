@@ -6,9 +6,9 @@ package otlploghttp_test
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
-	"go.opentelemetry.io/otel/log/global"
-	"go.opentelemetry.io/otel/sdk/log"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlplog/otlploghttp"
+	"github.com/grafana/opentelemetry-go/log/global"
+	"github.com/grafana/opentelemetry-go/sdk/log"
 )
 
 func Example() {

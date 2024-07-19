@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package ast // import "go.opentelemetry.io/otel/schema/v1.0/ast"
+package ast // import "github.com/grafana/opentelemetry-go/schema/v1.0/ast"
 
 // Logs corresponds to a section representing a list of changes that happened
 // to logs schema in a particular version.

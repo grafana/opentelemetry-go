@@ -3,7 +3,7 @@
 
 //go:generate stringer -type=InstrumentKind -trimprefix=InstrumentKind
 
-package metric // import "go.opentelemetry.io/otel/sdk/metric"
+package metric // import "github.com/grafana/opentelemetry-go/sdk/metric"
 
 import (
 	"context"
@@ -11,11 +11,11 @@ import (
 	"fmt"
 	"strings"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/embedded"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
-	"go.opentelemetry.io/otel/sdk/metric/internal/aggregate"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/metric"
+	"github.com/grafana/opentelemetry-go/metric/embedded"
+	"github.com/grafana/opentelemetry-go/sdk/instrumentation"
+	"github.com/grafana/opentelemetry-go/sdk/metric/internal/aggregate"
 )
 
 var zeroScope instrumentation.Scope
@@ -141,7 +141,7 @@ type Stream struct {
 	// the attribute will not be recorded, otherwise, if it returns true, it
 	// will record the attribute.
 	//
-	// Use NewAllowKeysFilter from "go.opentelemetry.io/otel/attribute" to
+	// Use NewAllowKeysFilter from "github.com/grafana/opentelemetry-go/attribute" to
 	// provide an allow-list of attribute keys here.
 	AttributeFilter attribute.Filter
 }

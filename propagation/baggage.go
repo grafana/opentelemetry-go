@@ -1,12 +1,12 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package propagation // import "go.opentelemetry.io/otel/propagation"
+package propagation // import "github.com/grafana/opentelemetry-go/propagation"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/baggage"
+	"github.com/grafana/opentelemetry-go/baggage"
 )
 
 const baggageHeader = "baggage"

@@ -4,7 +4,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package matchers // import "go.opentelemetry.io/otel/sdk/internal/matchers"
+package matchers // import "github.com/grafana/opentelemetry-go/sdk/internal/matchers"
 
 type TemporalMatcher byte
 

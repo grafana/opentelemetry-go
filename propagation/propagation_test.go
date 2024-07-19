@@ -11,7 +11,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/propagation"
+	"github.com/grafana/opentelemetry-go/propagation"
 )
 
 type ctxKeyType uint

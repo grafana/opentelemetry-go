@@ -1,15 +1,15 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package metric // import "go.opentelemetry.io/otel/sdk/metric"
+package metric // import "github.com/grafana/opentelemetry-go/sdk/metric"
 
 import (
 	"os"
 	"runtime"
 	"slices"
 
-	"go.opentelemetry.io/otel/sdk/metric/internal/exemplar"
-	"go.opentelemetry.io/otel/sdk/metric/internal/x"
+	"github.com/grafana/opentelemetry-go/sdk/metric/internal/exemplar"
+	"github.com/grafana/opentelemetry-go/sdk/metric/internal/x"
 )
 
 // reservoirFunc returns the appropriately configured exemplar reservoir

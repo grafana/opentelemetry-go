@@ -13,18 +13,18 @@ import (
 	"testing"
 	"time"
 
-	ottest "go.opentelemetry.io/otel/sdk/internal/internaltest"
+	ottest "github.com/grafana/opentelemetry-go/sdk/internal/internaltest"
 
 	"github.com/go-logr/logr"
 	"github.com/go-logr/logr/funcr"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"go.opentelemetry.io/otel/internal/global"
-	"go.opentelemetry.io/otel/sdk/internal/env"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	"go.opentelemetry.io/otel/sdk/trace/tracetest"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/internal/global"
+	"github.com/grafana/opentelemetry-go/sdk/internal/env"
+	sdktrace "github.com/grafana/opentelemetry-go/sdk/trace"
+	"github.com/grafana/opentelemetry-go/sdk/trace/tracetest"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 type testBatchExporter struct {

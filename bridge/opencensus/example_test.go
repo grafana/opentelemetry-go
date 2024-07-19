@@ -4,8 +4,8 @@
 package opencensus_test
 
 import (
-	"go.opentelemetry.io/otel/bridge/opencensus"
-	"go.opentelemetry.io/otel/sdk/metric"
+	"github.com/grafana/opentelemetry-go/bridge/opencensus"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
 )
 
 func ExampleNewMetricProducer() {

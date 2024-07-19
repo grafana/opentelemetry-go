@@ -6,7 +6,7 @@ package log_test
 import (
 	"testing"
 
-	"go.opentelemetry.io/otel/log"
+	"github.com/grafana/opentelemetry-go/log"
 )
 
 // Store results in a file scope var to ensure compiler does not optimize the

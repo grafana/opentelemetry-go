@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"go.opentelemetry.io/otel/log"
+	"github.com/grafana/opentelemetry-go/log"
 )
 
 func TestAssertRecord(t *testing.T) {

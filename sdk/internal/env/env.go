@@ -1,13 +1,13 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package env // import "go.opentelemetry.io/otel/sdk/internal/env"
+package env // import "github.com/grafana/opentelemetry-go/sdk/internal/env"
 
 import (
 	"os"
 	"strconv"
 
-	"go.opentelemetry.io/otel/internal/global"
+	"github.com/grafana/opentelemetry-go/internal/global"
 )
 
 // Environment variable names.

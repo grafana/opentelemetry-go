@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internal // import "go.opentelemetry.io/otel/bridge/opentracing/internal"
+package internal // import "github.com/grafana/opentelemetry-go/bridge/opentracing/internal"
 
 import (
 	"context"
@@ -10,13 +10,13 @@ import (
 	"sync"
 	"time"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/bridge/opentracing/migration"
-	"go.opentelemetry.io/otel/codes"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-	"go.opentelemetry.io/otel/trace/embedded"
-	"go.opentelemetry.io/otel/trace/noop"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/bridge/opentracing/migration"
+	"github.com/grafana/opentelemetry-go/codes"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
+	"github.com/grafana/opentelemetry-go/trace"
+	"github.com/grafana/opentelemetry-go/trace/embedded"
+	"github.com/grafana/opentelemetry-go/trace/noop"
 )
 
 //nolint:revive // ignoring missing comments for unexported global variables in an internal package.

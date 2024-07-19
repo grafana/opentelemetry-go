@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace"
 )
 
 // regex taken from https://github.com/Masterminds/semver/tree/v3.1.1

@@ -1,12 +1,12 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package exemplar // import "go.opentelemetry.io/otel/sdk/metric/internal/exemplar"
+package exemplar // import "github.com/grafana/opentelemetry-go/sdk/metric/internal/exemplar"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/attribute"
+	"github.com/grafana/opentelemetry-go/attribute"
 )
 
 // Drop returns a [FilteredReservoir] that drops all measurements it is offered.

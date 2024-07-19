@@ -96,21 +96,21 @@ linters-settings:
         files:
           - "!**/exporters/otlp/internal/**/*.go"
         deny:
-          - pkg: "go.opentelemetry.io/otel/exporters/otlp/internal"
+          - pkg: "github.com/grafana/opentelemetry-go/exporters/otlp/internal"
             desc: Do not use cross-module internal packages.
       otlptrace-internal:
         files:
           - "!**/exporters/otlp/otlptrace/*.go"
           - "!**/exporters/otlp/otlptrace/internal/**.go"
         deny:
-          - pkg: "go.opentelemetry.io/otel/exporters/otlp/otlptrace/internal"
+          - pkg: "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/internal"
             desc: Do not use cross-module internal packages.
       otlpmetric-internal:
         files:
           - "!**/exporters/otlp/otlpmetric/internal/*.go"
           - "!**/exporters/otlp/otlpmetric/internal/**/*.go"
         deny:
-          - pkg: "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/internal"
+          - pkg: "github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/internal"
             desc: Do not use cross-module internal packages.
       otel-internal:
         files:
@@ -131,13 +131,13 @@ linters-settings:
           - "**/log/*.go"
           - "**/log/**/*.go"
         deny:
-          - pkg: "go.opentelemetry.io/otel/internal$"
+          - pkg: "github.com/grafana/opentelemetry-go/internal$"
             desc: Do not use cross-module internal packages.
-          - pkg: "go.opentelemetry.io/otel/internal/attribute"
+          - pkg: "github.com/grafana/opentelemetry-go/internal/attribute"
             desc: Do not use cross-module internal packages.
-          - pkg: "go.opentelemetry.io/otel/internal/internaltest"
+          - pkg: "github.com/grafana/opentelemetry-go/internal/internaltest"
             desc: Do not use cross-module internal packages.
-          - pkg: "go.opentelemetry.io/otel/internal/matchers"
+          - pkg: "github.com/grafana/opentelemetry-go/internal/matchers"
             desc: Do not use cross-module internal packages.
   godot:
     exclude:

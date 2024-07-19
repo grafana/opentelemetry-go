@@ -1,16 +1,16 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package logtest // import "go.opentelemetry.io/otel/log/logtest"
+package logtest // import "github.com/grafana/opentelemetry-go/log/logtest"
 
 import (
 	"time"
 
-	"go.opentelemetry.io/otel/log"
+	"github.com/grafana/opentelemetry-go/log"
 )
 
 // RecordFactory is used to facilitate unit testing bridge implementations that
-// make use of a [go.opentelemetry.io/otel/log.Record]
+// make use of a [github.com/grafana/opentelemetry-go/log.Record]
 //
 // Do not use RecordFactory to create records in production code.
 type RecordFactory struct {

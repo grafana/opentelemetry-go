@@ -15,7 +15,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp/internal/envconfig"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp/internal/envconfig"
 )
 
 const (

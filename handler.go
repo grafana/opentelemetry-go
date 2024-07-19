@@ -1,10 +1,10 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otel // import "go.opentelemetry.io/otel"
+package otel // import "github.com/grafana/opentelemetry-go"
 
 import (
-	"go.opentelemetry.io/otel/internal/global"
+	"github.com/grafana/opentelemetry-go/internal/global"
 )
 
 // Compile-time check global.ErrDelegator implements ErrorHandler.

@@ -6,7 +6,7 @@ package resource_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/sdk/resource"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
 )
 
 func mockHostIDProvider() {

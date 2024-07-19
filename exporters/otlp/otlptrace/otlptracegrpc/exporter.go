@@ -1,12 +1,12 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlptracegrpc // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+package otlptracegrpc // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace"
 )
 
 // New constructs a new Exporter and starts it.

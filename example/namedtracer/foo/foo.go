@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package foo // import "go.opentelemetry.io/otel/example/namedtracer/foo"
+package foo // import "github.com/grafana/opentelemetry-go/example/namedtracer/foo"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/trace"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 var lemonsKey = attribute.Key("ex.com/lemons")

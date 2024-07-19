@@ -1,3 +1,3 @@
 # Trace API
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/trace)](https://pkg.go.dev/go.opentelemetry.io/otel/trace)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/trace)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/trace)

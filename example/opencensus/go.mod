@@ -1,21 +1,21 @@
-module go.opentelemetry.io/otel/example/opencensus
+module github.com/grafana/opentelemetry-go/example/opencensus
 
 go 1.21
 
 replace (
-	go.opentelemetry.io/otel => ../..
-	go.opentelemetry.io/otel/bridge/opencensus => ../../bridge/opencensus
-	go.opentelemetry.io/otel/sdk => ../../sdk
+	github.com/grafana/opentelemetry-go => ../..
+	github.com/grafana/opentelemetry-go/bridge/opencensus => ../../bridge/opencensus
+	github.com/grafana/opentelemetry-go/sdk => ../../sdk
 )
 
 require (
+	github.com/grafana/opentelemetry-go v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/bridge/opencensus v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/sdk v1.28.0-grafana.5-renamed
+	github.com/grafana/opentelemetry-go/sdk/metric v1.28.0-grafana.5-renamed
 	go.opencensus.io v0.24.0
-	go.opentelemetry.io/otel v1.28.0
-	go.opentelemetry.io/otel/bridge/opencensus v1.28.0
-	go.opentelemetry.io/otel/exporters/stdout/stdoutmetric v1.28.0
-	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.28.0
-	go.opentelemetry.io/otel/sdk v1.28.0
-	go.opentelemetry.io/otel/sdk/metric v1.28.0
 )
 
 require (
@@ -23,17 +23,17 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	go.opentelemetry.io/otel/metric v1.28.0 // indirect
-	go.opentelemetry.io/otel/trace v1.28.0 // indirect
+	github.com/grafana/opentelemetry-go/metric v1.28.0-grafana.5-renamed // indirect
+	github.com/grafana/opentelemetry-go/trace v1.28.0-grafana.5-renamed // indirect
 	golang.org/x/sys v0.21.0 // indirect
 )
 
-replace go.opentelemetry.io/otel/metric => ../../metric
+replace github.com/grafana/opentelemetry-go/metric => ../../metric
 
-replace go.opentelemetry.io/otel/sdk/metric => ../../sdk/metric
+replace github.com/grafana/opentelemetry-go/sdk/metric => ../../sdk/metric
 
-replace go.opentelemetry.io/otel/trace => ../../trace
+replace github.com/grafana/opentelemetry-go/trace => ../../trace
 
-replace go.opentelemetry.io/otel/exporters/stdout/stdoutmetric => ../../exporters/stdout/stdoutmetric
+replace github.com/grafana/opentelemetry-go/exporters/stdout/stdoutmetric => ../../exporters/stdout/stdoutmetric
 
-replace go.opentelemetry.io/otel/exporters/stdout/stdouttrace => ../../exporters/stdout/stdouttrace
+replace github.com/grafana/opentelemetry-go/exporters/stdout/stdouttrace => ../../exporters/stdout/stdouttrace

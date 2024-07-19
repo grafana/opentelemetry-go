@@ -7,9 +7,9 @@ import (
 	"context"
 	"testing"
 
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/embedded"
-	"go.opentelemetry.io/otel/metric/noop"
+	"github.com/grafana/opentelemetry-go/metric"
+	"github.com/grafana/opentelemetry-go/metric/embedded"
+	"github.com/grafana/opentelemetry-go/metric/noop"
 )
 
 func testFloat64ConcurrentSafe(interact func(float64), setDelegate func(metric.Meter)) {

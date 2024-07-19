@@ -1,13 +1,13 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package logtest // import "go.opentelemetry.io/otel/log/logtest"
+package logtest // import "github.com/grafana/opentelemetry-go/log/logtest"
 
 import (
 	"slices"
 	"testing"
 
-	"go.opentelemetry.io/otel/log"
+	"github.com/grafana/opentelemetry-go/log"
 )
 
 // AssertRecordEqual compares two log records, and fails the test if they are

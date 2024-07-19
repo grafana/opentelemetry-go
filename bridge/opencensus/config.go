@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package opencensus // import "go.opentelemetry.io/otel/bridge/opencensus"
+package opencensus // import "github.com/grafana/opentelemetry-go/bridge/opencensus"
 
 import (
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/trace"
+	otel "github.com/grafana/opentelemetry-go"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
-const scopeName = "go.opentelemetry.io/otel/bridge/opencensus"
+const scopeName = "github.com/grafana/opentelemetry-go/bridge/opencensus"
 
 // newTraceConfig returns a config configured with options.
 func newTraceConfig(options []TraceOption) traceConfig {

@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internal // import "go.opentelemetry.io/otel/bridge/opencensus/internal/ocmetric"
+package internal // import "github.com/grafana/opentelemetry-go/bridge/opencensus/internal/ocmetric"
 
 import (
 	"cmp"
@@ -15,8 +15,8 @@ import (
 	ocmetricdata "go.opencensus.io/metric/metricdata"
 	octrace "go.opencensus.io/trace"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/sdk/metric/metricdata"
 )
 
 var (

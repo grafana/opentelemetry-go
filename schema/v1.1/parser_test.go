@@ -8,10 +8,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	ast10 "go.opentelemetry.io/otel/schema/v1.0/ast"
-	types10 "go.opentelemetry.io/otel/schema/v1.0/types"
-	ast11 "go.opentelemetry.io/otel/schema/v1.1/ast"
-	types11 "go.opentelemetry.io/otel/schema/v1.1/types"
+	ast10 "github.com/grafana/opentelemetry-go/schema/v1.0/ast"
+	types10 "github.com/grafana/opentelemetry-go/schema/v1.0/types"
+	ast11 "github.com/grafana/opentelemetry-go/schema/v1.1/ast"
+	types11 "github.com/grafana/opentelemetry-go/schema/v1.1/types"
 )
 
 func TestParseSchemaFile(t *testing.T) {

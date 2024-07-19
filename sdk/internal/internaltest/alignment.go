@@ -4,7 +4,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package internaltest // import "go.opentelemetry.io/otel/sdk/internal/internaltest"
+package internaltest // import "github.com/grafana/opentelemetry-go/sdk/internal/internaltest"
 
 /*
 This file contains common utilities and objects to validate memory alignment

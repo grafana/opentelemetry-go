@@ -4,17 +4,18 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlptracetest // import "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/internal/otlptracetest"
+package otlptracetest // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracegrpc/internal/otlptracetest"
 
 import (
 	"context"
 	"testing"
 	"time"
 
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
-	"go.opentelemetry.io/otel/sdk/resource"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	"github.com/grafana/opentelemetry-go/attribute"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace"
+	"github.com/grafana/opentelemetry-go/sdk/resource"
+	sdktrace "github.com/grafana/opentelemetry-go/sdk/trace"
+
 	commonpb "go.opentelemetry.io/proto/otlp/common/v1"
 )
 

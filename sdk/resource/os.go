@@ -1,14 +1,14 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package resource // import "go.opentelemetry.io/otel/sdk/resource"
+package resource // import "github.com/grafana/opentelemetry-go/sdk/resource"
 
 import (
 	"context"
 	"strings"
 
-	"go.opentelemetry.io/otel/attribute"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	"github.com/grafana/opentelemetry-go/attribute"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
 )
 
 type osDescriptionProvider func() (string, error)

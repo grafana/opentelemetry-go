@@ -1,3 +1,3 @@
 # Metric SDK
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/sdk/metric)](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/sdk/metric)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/sdk/metric)

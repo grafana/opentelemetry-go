@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package otlpmetrichttp // import "go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
+package otlpmetrichttp // import "github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp"
 
 import (
 	"crypto/tls"
@@ -9,9 +9,9 @@ import (
 	"net/url"
 	"time"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp/internal/oconf"
-	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp/internal/retry"
-	"go.opentelemetry.io/otel/sdk/metric"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp/internal/oconf"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlpmetric/otlpmetrichttp/internal/retry"
+	"github.com/grafana/opentelemetry-go/sdk/metric"
 )
 
 // Compression describes the compression used for payloads sent to the
@@ -200,7 +200,7 @@ func WithRetry(rc RetryConfig) Option {
 // WithTemporalitySelector sets the TemporalitySelector the client will use to
 // determine the Temporality of an instrument based on its kind. If this option
 // is not used, the client will use the DefaultTemporalitySelector from the
-// go.opentelemetry.io/otel/sdk/metric package.
+// github.com/grafana/opentelemetry-go/sdk/metric package.
 func WithTemporalitySelector(selector metric.TemporalitySelector) Option {
 	return wrappedOption{oconf.WithTemporalitySelector(selector)}
 }
@@ -208,7 +208,7 @@ func WithTemporalitySelector(selector metric.TemporalitySelector) Option {
 // WithAggregationSelector sets the AggregationSelector the client will use to
 // determine the aggregation to use for an instrument based on its kind. If
 // this option is not used, the reader will use the DefaultAggregationSelector
-// from the go.opentelemetry.io/otel/sdk/metric package, or the aggregation
+// from the github.com/grafana/opentelemetry-go/sdk/metric package, or the aggregation
 // explicitly passed for a view matching an instrument.
 func WithAggregationSelector(selector metric.AggregationSelector) Option {
 	return wrappedOption{oconf.WithAggregationSelector(selector)}

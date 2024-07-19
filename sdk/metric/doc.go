@@ -17,7 +17,7 @@
 // done by configuring it with a Reader implementation (using the WithReader
 // MeterProviderOption). Readers take two forms: ones that push to an endpoint
 // (NewPeriodicReader), and ones that an endpoint pulls from. See
-// [go.opentelemetry.io/otel/exporters] for exporters that can be used as
+// [github.com/grafana/opentelemetry-go/exporters] for exporters that can be used as
 // or with these Readers.
 //
 // Each Reader, when registered with the MeterProvider, can be augmented with a
@@ -31,9 +31,9 @@
 // is being run on. That way when multiple instances of the code are collected
 // at a single endpoint their origin is decipherable.
 //
-// See [go.opentelemetry.io/otel/metric] for more information about
+// See [github.com/grafana/opentelemetry-go/metric] for more information about
 // the metric API.
 //
-// See [go.opentelemetry.io/otel/sdk/metric/internal/x] for information about
+// See [github.com/grafana/opentelemetry-go/sdk/metric/internal/x] for information about
 // the experimental features.
-package metric // import "go.opentelemetry.io/otel/sdk/metric"
+package metric // import "github.com/grafana/opentelemetry-go/sdk/metric"

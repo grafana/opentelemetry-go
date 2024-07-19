@@ -9,7 +9,7 @@ import (
 	octrace "go.opencensus.io/trace"
 	"go.opencensus.io/trace/tracestate"
 
-	"go.opentelemetry.io/otel/trace"
+	"github.com/grafana/opentelemetry-go/trace"
 )
 
 func TestSpanContextConversion(t *testing.T) {

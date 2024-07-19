@@ -10,36 +10,36 @@
 // extended (which is something that can happen without a major version bump of
 // the API package).
 //
-// [OpenTelemetry trace API]: https://pkg.go.dev/go.opentelemetry.io/otel/trace
-package embedded // import "go.opentelemetry.io/otel/trace/embedded"
+// [OpenTelemetry trace API]: https://pkg.go.dev/github.com/grafana/opentelemetry-go/trace
+package embedded // import "github.com/grafana/opentelemetry-go/trace/embedded"
 
 // TracerProvider is embedded in
-// [go.opentelemetry.io/otel/trace.TracerProvider].
+// [github.com/grafana/opentelemetry-go/trace.TracerProvider].
 //
 // Embed this interface in your implementation of the
-// [go.opentelemetry.io/otel/trace.TracerProvider] if you want users to
+// [github.com/grafana/opentelemetry-go/trace.TracerProvider] if you want users to
 // experience a compilation error, signaling they need to update to your latest
-// implementation, when the [go.opentelemetry.io/otel/trace.TracerProvider]
+// implementation, when the [github.com/grafana/opentelemetry-go/trace.TracerProvider]
 // interface is extended (which is something that can happen without a major
 // version bump of the API package).
 type TracerProvider interface{ tracerProvider() }
 
-// Tracer is embedded in [go.opentelemetry.io/otel/trace.Tracer].
+// Tracer is embedded in [github.com/grafana/opentelemetry-go/trace.Tracer].
 //
 // Embed this interface in your implementation of the
-// [go.opentelemetry.io/otel/trace.Tracer] if you want users to experience a
+// [github.com/grafana/opentelemetry-go/trace.Tracer] if you want users to experience a
 // compilation error, signaling they need to update to your latest
-// implementation, when the [go.opentelemetry.io/otel/trace.Tracer] interface
+// implementation, when the [github.com/grafana/opentelemetry-go/trace.Tracer] interface
 // is extended (which is something that can happen without a major version bump
 // of the API package).
 type Tracer interface{ tracer() }
 
-// Span is embedded in [go.opentelemetry.io/otel/trace.Span].
+// Span is embedded in [github.com/grafana/opentelemetry-go/trace.Span].
 //
 // Embed this interface in your implementation of the
-// [go.opentelemetry.io/otel/trace.Span] if you want users to experience a
+// [github.com/grafana/opentelemetry-go/trace.Span] if you want users to experience a
 // compilation error, signaling they need to update to your latest
-// implementation, when the [go.opentelemetry.io/otel/trace.Span] interface is
+// implementation, when the [github.com/grafana/opentelemetry-go/trace.Span] interface is
 // extended (which is something that can happen without a major version bump of
 // the API package).
 type Span interface{ span() }

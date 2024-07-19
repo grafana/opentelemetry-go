@@ -10,9 +10,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/log/embedded"
-	"go.opentelemetry.io/otel/log/noop"
+	"github.com/grafana/opentelemetry-go/log"
+	"github.com/grafana/opentelemetry-go/log/embedded"
+	"github.com/grafana/opentelemetry-go/log/noop"
 )
 
 func TestLoggerProviderConcurrentSafe(t *testing.T) {

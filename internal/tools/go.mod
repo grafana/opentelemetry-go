@@ -1,4 +1,4 @@
-module go.opentelemetry.io/otel/internal/tools
+module github.com/grafana/opentelemetry-go/internal/tools
 
 go 1.21
 

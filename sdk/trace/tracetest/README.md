@@ -1,3 +1,3 @@
 # SDK Trace test
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/sdk/trace/tracetest)](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace/tracetest)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/sdk/trace/tracetest)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/sdk/trace/tracetest)

@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package resource // import "go.opentelemetry.io/otel/sdk/resource"
+package resource // import "github.com/grafana/opentelemetry-go/sdk/resource"
 
 import (
 	"bufio"
@@ -11,7 +11,7 @@ import (
 	"os"
 	"regexp"
 
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "github.com/grafana/opentelemetry-go/semconv/v1.26.0"
 )
 
 type containerIDProvider func() (string, error)

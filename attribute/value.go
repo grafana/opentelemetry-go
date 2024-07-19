@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package attribute // import "go.opentelemetry.io/otel/attribute"
+package attribute // import "github.com/grafana/opentelemetry-go/attribute"
 
 import (
 	"encoding/json"
@@ -9,8 +9,8 @@ import (
 	"reflect"
 	"strconv"
 
-	"go.opentelemetry.io/otel/internal"
-	"go.opentelemetry.io/otel/internal/attribute"
+	"github.com/grafana/opentelemetry-go/internal"
+	"github.com/grafana/opentelemetry-go/internal/attribute"
 )
 
 //go:generate stringer -type=Type

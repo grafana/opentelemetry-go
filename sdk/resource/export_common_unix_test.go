@@ -4,7 +4,7 @@
 //go:build aix || darwin || dragonfly || freebsd || linux || netbsd || openbsd || solaris || zos
 // +build aix darwin dragonfly freebsd linux netbsd openbsd solaris zos
 
-package resource // import "go.opentelemetry.io/otel/sdk/resource"
+package resource // import "github.com/grafana/opentelemetry-go/sdk/resource"
 
 var (
 	Uname                 = uname

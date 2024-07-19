@@ -1,13 +1,13 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package global // import "go.opentelemetry.io/otel/internal/global"
+package global // import "github.com/grafana/opentelemetry-go/internal/global"
 
 import (
 	"context"
 	"sync"
 
-	"go.opentelemetry.io/otel/propagation"
+	"github.com/grafana/opentelemetry-go/propagation"
 )
 
 // textMapPropagator is a default TextMapPropagator that delegates calls to a

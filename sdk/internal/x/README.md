@@ -20,7 +20,7 @@ All other values are ignored.
 <!-- TODO: document what attributes are added by which detector -->
 
 [OpenTelemetry resource semantic conventions]: https://opentelemetry.io/docs/specs/semconv/resource/
-[resource detectors]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource#Detector
+[resource detectors]: https://pkg.go.dev/github.com/grafana/opentelemetry-go/sdk/resource#Detector
 
 #### Examples
 

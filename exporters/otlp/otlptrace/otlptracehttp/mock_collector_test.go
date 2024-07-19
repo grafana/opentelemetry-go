@@ -20,8 +20,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp/internal/otlpconfig"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp/internal/otlptracetest"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp/internal/otlpconfig"
+	"github.com/grafana/opentelemetry-go/exporters/otlp/otlptrace/otlptracehttp/internal/otlptracetest"
+
 	collectortracepb "go.opentelemetry.io/proto/otlp/collector/trace/v1"
 	tracepb "go.opentelemetry.io/proto/otlp/trace/v1"
 )

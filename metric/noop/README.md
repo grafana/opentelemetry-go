@@ -1,3 +1,3 @@
 # Metric Noop
 
-[![PkgGoDev](https://pkg.go.dev/badge/go.opentelemetry.io/otel/metric/noop)](https://pkg.go.dev/go.opentelemetry.io/otel/metric/noop)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/grafana/opentelemetry-go/metric/noop)](https://pkg.go.dev/github.com/grafana/opentelemetry-go/metric/noop)

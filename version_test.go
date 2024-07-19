@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.opentelemetry.io/otel"
+	otel "github.com/grafana/opentelemetry-go"
 )
 
 // regex taken from https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string

@@ -10,13 +10,13 @@
 // This implementation can be embedded in other implementations of the
 // OpenTelemetry metric API. Doing so will mean the implementation defaults to
 // no operation for methods it does not implement.
-package noop // import "go.opentelemetry.io/otel/metric/noop"
+package noop // import "github.com/grafana/opentelemetry-go/metric/noop"
 
 import (
 	"context"
 
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/embedded"
+	"github.com/grafana/opentelemetry-go/metric"
+	"github.com/grafana/opentelemetry-go/metric/embedded"
 )
 
 var (

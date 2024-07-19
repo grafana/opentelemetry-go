@@ -1,11 +1,11 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package ast // import "go.opentelemetry.io/otel/schema/v1.1/ast"
+package ast // import "github.com/grafana/opentelemetry-go/schema/v1.1/ast"
 
 import (
-	ast10 "go.opentelemetry.io/otel/schema/v1.0/ast"
-	"go.opentelemetry.io/otel/schema/v1.1/types"
+	ast10 "github.com/grafana/opentelemetry-go/schema/v1.0/ast"
+	"github.com/grafana/opentelemetry-go/schema/v1.1/types"
 )
 
 // Schema represents a Schema file in FileFormat 1.1.0 as defined in
