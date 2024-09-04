@@ -108,8 +108,8 @@ func testBuilderFilter[N int64 | float64]() func(t *testing.T) {
 type arg[N int64 | float64] struct {
 	ctx context.Context
 
-	value  N
-	attr   attribute.Set
+	value N
+	attr  attribute.Set
 }
 
 type output struct {
@@ -165,13 +165,14 @@ func benchmarkAggregateN[N int64 | float64](b *testing.B, factory func() (Measur
 
 	b.Run("Measure", func(b *testing.B) {
 		got := &bmarkRes
-		meas, _, comp := factory()
+		meas, remove, comp := factory()
 		b.ReportAllocs()
 		b.ResetTimer()
 
 		for n := 0; n < b.N; n++ {
 			for _, attr := range attrs {
 				meas(ctx, 1, attr)
+				remove(ctx, attr)
 			}
 		}
 

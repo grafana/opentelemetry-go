@@ -800,7 +800,7 @@ func testDeltaExpoHist[N int64 | float64]() func(t *testing.T) {
 		},
 		{
 			// Delta sums are expected to reset.
-			input: []arg[N]{},
+			input:  []arg[N]{},
 			remove: []arg[N]{},
 			expect: output{
 				n: 0,
@@ -881,7 +881,7 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 	ctx := context.Background()
 	return test[N](in, remove, out, []teststep[N]{
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
 			remove: []arg[N]{},
 			expect: output{
 				n: 0,
@@ -964,7 +964,7 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 			},
 		},
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
 			remove: []arg[N]{},
 			expect: output{
 				n: 1,
@@ -1093,7 +1093,7 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 			},
 		},
 		{
-			input: []arg[N]{},
+			input:  []arg[N]{},
 			remove: []arg[N]{},
 			expect: output{
 				n: 1,
@@ -1119,6 +1119,182 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 			},
 		},
 	})
+}
+
+func TestExponentialHistogramStaleAggregation(t *testing.T) {
+	c := new(clock)
+	t.Cleanup(c.Register())
+
+	t.Run("Int64/Cumulative", testCumulativeExpoHist1[int64]())
+	c.Reset()
+}
+
+func testHm[N int64 | float64](t *testing.T, got *metricdata.Aggregation, meas Measure[N], rem Remove, comp ComputeAggregation, steps []teststep[N]) {
+	t.Helper()
+
+	for i, step := range steps {
+		for _, args := range step.input {
+			meas(args.ctx, args.value, args.attr)
+		}
+		for _, args := range step.remove {
+			rem(args.ctx, args.attr)
+		}
+
+		t.Logf("step: %d", i)
+		assert.Equal(t, step.expect.n, comp(got), "incorrect data size")
+
+		for i := 0; i < step.expect.n; i++ {
+			d := step.expect.agg.(metricdata.ExponentialHistogram[N]).DataPoints[i]
+			g1, ok := (*got).(metricdata.ExponentialHistogram[N])
+			if !ok {
+				t.Errorf("unexpected type for data point at index %d", i)
+			}
+			assert.Equal(t, d, g1.DataPoints[i])
+		}
+
+	}
+}
+
+func (b Builder[N]) ExponentialBucketHistogramHelper(maxSize, maxScale int32, noMinMax, noSum bool) (*expoHistogram[N], Measure[N], Remove, ComputeAggregation) {
+	h := newExponentialHistogram[N](maxSize, maxScale, noMinMax, noSum, b.AggregationLimit, b.resFunc())
+	switch b.Temporality {
+	case metricdata.DeltaTemporality:
+		return h, b.filter(h.measure), h.remove, h.delta
+	default:
+		return h, b.filter(h.measure), h.remove, h.cumulative
+	}
+}
+
+func testCumulativeExpoHist1[N int64 | float64]() func(t *testing.T) {
+	h, in, remove, out := Builder[N]{
+		Temporality:      metricdata.CumulativeTemporality,
+		Filter:           attrFltr,
+		AggregationLimit: 5,
+	}.ExponentialBucketHistogramHelper(4, 20, false, false)
+	ctx := context.Background()
+
+	return func(t *testing.T) {
+		got := new(metricdata.Aggregation)
+
+		testHm[N](t, got, in, remove, out, []teststep[N]{
+			{
+				input: []arg[N]{
+					{ctx, 4, alice},
+					{ctx, 4, alice},
+					{ctx, 4, alice},
+					{ctx, 2, alice},
+					{ctx, 16, alice},
+					{ctx, -1, alice},
+					{ctx, 2, bob},
+				},
+				remove: []arg[N]{},
+				expect: output{
+					n: 2,
+					agg: metricdata.ExponentialHistogram[N]{
+						Temporality: metricdata.CumulativeTemporality,
+						DataPoints: []metricdata.ExponentialHistogramDataPoint[N]{
+							{
+								Attributes: fltrAlice,
+								StartTime:  y2kPlus(0),
+								Time:       y2kPlus(1),
+								Count:      6,
+								Min:        metricdata.NewExtrema[N](-1),
+								Max:        metricdata.NewExtrema[N](16),
+								Sum:        29,
+								Scale:      0,
+								PositiveBucket: metricdata.ExponentialBucket{
+									Offset: 0,
+									Counts: []uint64{1, 3, 0, 1},
+								},
+								NegativeBucket: metricdata.ExponentialBucket{
+									Offset: -1,
+									Counts: []uint64{1},
+								},
+							},
+							{
+								Attributes: fltrBob,
+								StartTime:  y2kPlus(0),
+								Time:       y2kPlus(1),
+								Count:      1,
+								Min:        metricdata.NewExtrema[N](2),
+								Max:        metricdata.NewExtrema[N](2),
+								Sum:        2,
+								Scale:      20,
+								PositiveBucket: metricdata.ExponentialBucket{
+									Offset: 1048575,
+									Counts: []uint64{1},
+								},
+								NegativeBucket: metricdata.ExponentialBucket{
+									Offset: 0,
+									Counts: nil,
+								},
+							},
+						},
+					},
+				},
+			},
+		})
+
+		h.remove(ctx, fltrBob) // make bob stale
+
+		testHm[N](t, got, in, remove, out, []teststep[N]{
+			{
+				input: []arg[N]{
+					{ctx, 4, alice},
+					{ctx, 4, alice},
+					{ctx, 4, alice},
+					{ctx, 2, alice},
+					{ctx, 16, alice},
+					{ctx, -1, alice},
+				},
+				remove: []arg[N]{},
+				expect: output{
+					n: 2,
+					agg: metricdata.ExponentialHistogram[N]{
+						Temporality: metricdata.CumulativeTemporality,
+						DataPoints: []metricdata.ExponentialHistogramDataPoint[N]{
+							{
+								Attributes: fltrAlice,
+								StartTime:  y2kPlus(0),
+								Time:       y2kPlus(2),
+								Count:      12,
+								Min:        metricdata.NewExtrema[N](-1),
+								Max:        metricdata.NewExtrema[N](16),
+								Sum:        58,
+								Scale:      0,
+								PositiveBucket: metricdata.ExponentialBucket{
+									Offset: 0,
+									Counts: []uint64{2, 6, 0, 2},
+								},
+								NegativeBucket: metricdata.ExponentialBucket{
+									Offset: -1,
+									Counts: []uint64{2},
+								},
+							},
+							{
+								Attributes: fltrBob,
+								StartTime:  y2kPlus(0),
+								Time:       y2kPlus(2),
+								Count:      0,
+								Sum:        0,
+								Scale:      0,
+								PositiveBucket: metricdata.ExponentialBucket{
+									Offset: 0,
+									Counts: nil,
+								},
+								NegativeBucket: metricdata.ExponentialBucket{
+									Offset: 0,
+									Counts: nil,
+								},
+								NoRecordedValue: true,
+							},
+						},
+					},
+				},
+			},
+		})
+
+	}
 }
 
 func FuzzGetBin(f *testing.F) {
