@@ -138,7 +138,7 @@ func (s *lastValue[N]) copyDpts(dest *[]metricdata.DataPoint[N], t time.Time, st
 		for _, v := range s.stale {
 			(*dest)[i].Attributes = v.attrs
 			(*dest)[i].StartTime = s.start
-			(*dest)[i].Time = v.timestamp
+			(*dest)[i].Time = t
 			(*dest)[i].NoRecordedValue = true
 			i++
 		}
