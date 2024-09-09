@@ -456,7 +456,7 @@ func (i *inserter[N]) aggregateFunc(b aggregate.Builder[N], agg Aggregation, kin
 	case AggregationLastValue:
 		switch kind {
 		case InstrumentKindGauge:
-			meas, comp = b.LastValue()
+			meas, remove, comp = b.LastValue()
 		case InstrumentKindObservableGauge:
 			meas, remove, comp = b.PrecomputedLastValue()
 		}
