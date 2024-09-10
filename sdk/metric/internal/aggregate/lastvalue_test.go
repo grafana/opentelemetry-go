@@ -266,7 +266,7 @@ func testCumulativeLastValue[N int64 | float64]() func(*testing.T) {
 				{ctx, 1, fltrBob},
 			},
 			expect: output{
-				n: 3,
+				n: 2,
 				agg: metricdata.Gauge[N]{
 					DataPoints: []metricdata.DataPoint[N]{
 						{
@@ -274,12 +274,6 @@ func testCumulativeLastValue[N int64 | float64]() func(*testing.T) {
 							StartTime:  y2kPlus(0),
 							Time:       y2kPlus(6),
 							Value:      1,
-						},
-						{
-							Attributes:      fltrBob,
-							StartTime:       y2kPlus(0),
-							Time:            y2kPlus(6),
-							NoRecordedValue: true,
 						},
 						{
 							Attributes: overflowSet,

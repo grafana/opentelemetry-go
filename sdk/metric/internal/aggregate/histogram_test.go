@@ -238,11 +238,10 @@ func testCumulativeHist[N int64 | float64](c conf[N]) func(t *testing.T) {
 				{ctx, 0, fltrAlice},
 			},
 			expect: output{
-				n: 3,
+				n: 2,
 				agg: metricdata.Histogram[N]{
 					Temporality: metricdata.CumulativeTemporality,
 					DataPoints: []metricdata.HistogramDataPoint[N]{
-						c.hPtRemoved(fltrAlice, 2, 2, y2kPlus(0), y2kPlus(6)),
 						c.hPt(fltrBob, 10, 3, y2kPlus(0), y2kPlus(6)),
 						c.hPt(overflowSet, 1, 2, y2kPlus(0), y2kPlus(6)),
 					},

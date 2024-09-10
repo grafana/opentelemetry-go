@@ -1051,29 +1051,10 @@ func testCumulativeExpoHist[N int64 | float64]() func(t *testing.T) {
 				{ctx, 0, fltrAlice},
 			},
 			expect: output{
-				n: 2,
+				n: 1,
 				agg: metricdata.ExponentialHistogram[N]{
 					Temporality: metricdata.CumulativeTemporality,
 					DataPoints: []metricdata.ExponentialHistogramDataPoint[N]{
-						{
-							Attributes: fltrAlice,
-							StartTime:  y2kPlus(0),
-							Time:       y2kPlus(6),
-							Count:      1,
-							Min:        metricdata.NewExtrema[N](-1),
-							Max:        metricdata.NewExtrema[N](16),
-							Sum:        31,
-							Scale:      -1,
-							PositiveBucket: metricdata.ExponentialBucket{
-								Offset: -1,
-								Counts: []uint64{1, 6, 2},
-							},
-							NegativeBucket: metricdata.ExponentialBucket{
-								Offset: -1,
-								Counts: []uint64{1},
-							},
-							NoRecordedValue: true,
-						},
 						{
 							Attributes: overflowSet,
 							StartTime:  y2kPlus(0),

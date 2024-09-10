@@ -291,7 +291,7 @@ func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 				{ctx, 0, fltrBob},
 			},
 			expect: output{
-				n: 3,
+				n: 2,
 				agg: metricdata.Sum[N]{
 					IsMonotonic: mono,
 					Temporality: metricdata.CumulativeTemporality,
@@ -301,12 +301,6 @@ func testCumulativeSum[N int64 | float64]() func(t *testing.T) {
 							StartTime:  y2kPlus(0),
 							Time:       y2kPlus(5),
 							Value:      14,
-						},
-						{
-							Attributes:      fltrBob,
-							StartTime:       y2kPlus(0),
-							Time:            y2kPlus(5),
-							NoRecordedValue: true,
 						},
 						{
 							Attributes: overflowSet,
